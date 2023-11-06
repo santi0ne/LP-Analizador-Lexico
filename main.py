@@ -35,7 +35,13 @@ tokens = (
     'RPAREN',            # Johnny Rodriguez
     'LKEY',              # Johnny Rodriguez
     'RKEY',              # Johnny Rodriguez
-    'COLLON'             # Johnny Rodriguez
+    'COLLON',            # Johnny Rodriguez
+    'SUMA',              # Jeremy Martinez
+    'RESTA',             # Jeremy Martinez
+    'MULTIPLICACION',    # Jeremy Martinez
+    'DIVISION',          # Jeremy Martinez
+    'INCREMENTO',         # Jeremy Martinez
+    'DECREMENTO'         # Jeremy Martinez
 )+tuple(reserved.values())
 
 # Expresiones Regulares simples para símbolos
@@ -45,6 +51,12 @@ t_RPAREN  = r'\)'
 t_LKEY = r'\{'
 t_RKEY = r'\}'
 t_COLLON = r':'
+t_SUMA = r'\+'
+t_RESTA = r'-'
+t_MULTIPLICACION = r'\*'
+t_DIVISION = r'/'
+t_INCREMENTO = r'\+\+'
+t_DECREMENTO = r'\-\-'
 
 # Expresiones Regulares para números y variables, incluye cast
 def t_IDENTIFICADOR(t):  # Johnny Rodriguez
@@ -78,8 +90,8 @@ def t_error(t):
 lexer = lex.lex()
 
 # Código para analizar
-code = switch_declaration()
-
+# code = switch_declaration()
+code = test_incremento_expression()
 # Enviando el código
 lexer.input(code)
 

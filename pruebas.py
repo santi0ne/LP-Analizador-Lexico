@@ -55,3 +55,40 @@ def switch_declaration():
                     // codigo
             }
            '''
+
+##  Jeremy Martinez
+def test_suma_expression():
+    return '''
+        resultado = x + y
+        a = b + c
+        '''
+
+def test_resta_expression():
+    return '''
+        resultado = x - y
+        a = b - c
+        '''
+
+def test_multiplicacion_expression():
+    return '''
+        resultado = x * y
+        a = b * c
+        '''
+
+def test_division_expression():
+    return '''
+        resultado = x / y
+        a = b / c
+        '''
+
+def test_incremento_expression():
+    return '''
+        b = c++
+        x++
+        '''
+
+def test_decremento_expression():
+    return '''
+        b = c--
+        x--
+        '''
