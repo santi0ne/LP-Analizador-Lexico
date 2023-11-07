@@ -40,11 +40,19 @@ tokens = (
     'RESTA',             # Jeremy Martinez
     'MULTIPLICACION',    # Jeremy Martinez
     'DIVISION',          # Jeremy Martinez
-    'INCREMENTO',         # Jeremy Martinez
-    'DECREMENTO'         # Jeremy Martinez
+    'INCREMENTO',        # Jeremy Martinez
+    'DECREMENTO',        # Jeremy Martinez
+    'MAYORQUE' ,         # Nicolas Coronel
+    'MENORQUE',          # Nicolas Coronel
+    'MAYORIGUALQUE',     # Nicolas Coronel
+    'MENORIGUALQUE',     # Nicolas Coronel
+    'MODULO',            # Nicolas Coronel
+    'IGUALQUE',          # Nicolas Coronel
+    'DIFERENTEQUE'      # Nicolas Coronel
 )+tuple(reserved.values())
 
 # Expresiones Regulares simples para símbolos
+t_IGUALQUE = r'=='
 t_ASSIGN = r'='
 t_LPAREN  = r'\('
 t_RPAREN  = r'\)'
@@ -57,6 +65,13 @@ t_MULTIPLICACION = r'\*'
 t_DIVISION = r'/'
 t_INCREMENTO = r'\+\+'
 t_DECREMENTO = r'\-\-'
+t_MAYORIGUALQUE = r'>='
+t_MENORIGUALQUE = r'<='
+t_MAYORQUE = r'>'
+t_MENORQUE = r'<'
+t_MODULO = r'%'
+t_DIFERENTEQUE = r'!='
+
 
 # Expresiones Regulares para números y variables, incluye cast
 def t_IDENTIFICADOR(t):  # Johnny Rodriguez

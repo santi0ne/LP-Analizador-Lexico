@@ -92,3 +92,44 @@ def test_decremento_expression():
         b = c--
         x--
         '''
+
+#### Nicolas Coronel ####
+
+def test_mayorQue():
+    return '''
+        z > 10
+        a > b
+        c>10
+        '''
+def test_menorQue():
+    return '''
+        1 < 10
+        a < b
+        '''
+def test_menorIgualQue():
+    return '''
+        10 <= 10
+        a<=b
+        '''
+def test_mayorIgualQue():
+    return '''
+        10 >= 10
+        a>=b
+        '''
+def test_diferenteQue():
+    return '''
+        z != 10
+        a != b
+        '''
+def test_igualQue():
+    return '''
+        z == 10
+        a == b
+        '''
+def test_modulo():
+    return '''
+        z % 10
+        3 % w
+        a % y
+        25 % 5
+        '''
