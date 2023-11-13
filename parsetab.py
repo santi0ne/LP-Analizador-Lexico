@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'ASSIGN BOOL CASE COLLON COMA DECREMENTO DIFERENTEQUE DIVISION ELSE ENTERO FLOAT32 FLOAT64 FLOTANTE FOR FUNC IDENTIFICADOR IF IGUALQUE IMPRIMIR INCREMENTO INT LKEY LPAREN MAYORIGUALQUE MAYORQUE MENORIGUALQUE MENORQUE MODULO MULTIPLICACION RESTA RETURN RKEY RPAREN STRING STRUCT SUMA SWITCH TYPE VARsentencia : impresion\n                | asignacion\n                | variable\n                | estructura\n                variable : VAR IDENTIFICADOR ASSIGN valorestructura : TYPE IDENTIFICADOR STRUCT LKEY RKEYasignacion : IDENTIFICADOR ASSIGN valoresimpresion : IMPRIMIR LPAREN valores RPAREN impresion : IMPRIMIR LPAREN RPARENvalores : valor\n                | valor COMA valores\n                valor : ENTERO\n            | FLOTANTE\n            | STRING\n            | BOOL\n            | IDENTIFICADOR\n            '
+_lr_signature = 'ASSIGN BOOL CASE COLLON COMA DECREMENTO DIFERENTEQUE DIVISION ELSE ENTERO FLOAT32 FLOAT64 FLOTANTE FOR FUNC IDENTIFICADOR IF IGUALQUE IMPRIMIR INCREMENTO INT LKEY LPAREN MAYORIGUALQUE MAYORQUE MENORIGUALQUE MENORQUE MODULO MULTIPLICACION RESTA RETURN RKEY RPAREN STRING STRUCT SUMA SWITCH TYPE VARsentencia : impresion\n                | asignacion\n                | variable\n                | estructura\n                estructura : TYPE IDENTIFICADOR STRUCT LKEY variable RKEYestructura : TYPE IDENTIFICADOR STRUCT LKEY RKEYvariable : VAR IDENTIFICADOR ASSIGN valorvariable : VAR IDENTIFICADORasignacion : IDENTIFICADOR ASSIGN valoresimpresion : IMPRIMIR LPAREN valores RPAREN impresion : IMPRIMIR LPAREN RPARENvalores : valor\n                | valor COMA valores\n                valor : ENTERO\n            | FLOTANTE\n            | STRING\n            | BOOL\n            | IDENTIFICADOR\n            '
     
-_lr_action_items = {'IMPRIMIR':([0,],[6,]),'IDENTIFICADOR':([0,8,9,10,11,23,26,],[7,12,13,21,21,21,21,]),'VAR':([0,],[8,]),'TYPE':([0,],[9,]),'$end':([1,2,3,4,5,15,16,17,18,19,20,21,22,25,27,29,30,],[0,-1,-2,-3,-4,-9,-10,-12,-13,-14,-15,-16,-7,-8,-5,-11,-6,]),'LPAREN':([6,],[10,]),'ASSIGN':([7,12,],[11,23,]),'RPAREN':([10,14,16,17,18,19,20,21,29,],[15,25,-10,-12,-13,-14,-15,-16,-11,]),'ENTERO':([10,11,23,26,],[17,17,17,17,]),'FLOTANTE':([10,11,23,26,],[18,18,18,18,]),'STRING':([10,11,23,26,],[19,19,19,19,]),'BOOL':([10,11,23,26,],[20,20,20,20,]),'STRUCT':([13,],[24,]),'COMA':([16,17,18,19,20,21,],[26,-12,-13,-14,-15,-16,]),'LKEY':([24,],[28,]),'RKEY':([28,],[30,]),}
+_lr_action_items = {'IMPRIMIR':([0,],[6,]),'IDENTIFICADOR':([0,8,9,10,11,23,26,],[7,12,13,21,21,21,21,]),'VAR':([0,28,],[8,8,]),'TYPE':([0,],[9,]),'$end':([1,2,3,4,5,12,15,16,17,18,19,20,21,22,25,27,29,31,32,],[0,-1,-2,-3,-4,-8,-11,-12,-14,-15,-16,-17,-18,-9,-10,-7,-13,-6,-5,]),'LPAREN':([6,],[10,]),'ASSIGN':([7,12,],[11,23,]),'RPAREN':([10,14,16,17,18,19,20,21,29,],[15,25,-12,-14,-15,-16,-17,-18,-13,]),'ENTERO':([10,11,23,26,],[17,17,17,17,]),'FLOTANTE':([10,11,23,26,],[18,18,18,18,]),'STRING':([10,11,23,26,],[19,19,19,19,]),'BOOL':([10,11,23,26,],[20,20,20,20,]),'RKEY':([12,17,18,19,20,21,27,28,30,],[-8,-14,-15,-16,-17,-18,-7,31,32,]),'STRUCT':([13,],[24,]),'COMA':([16,17,18,19,20,21,],[26,-14,-15,-16,-17,-18,]),'LKEY':([24,],[28,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'sentencia':([0,],[1,]),'impresion':([0,],[2,]),'asignacion':([0,],[3,]),'variable':([0,],[4,]),'estructura':([0,],[5,]),'valores':([10,11,26,],[14,22,29,]),'valor':([10,11,23,26,],[16,16,27,16,]),}
+_lr_goto_items = {'sentencia':([0,],[1,]),'impresion':([0,],[2,]),'asignacion':([0,],[3,]),'variable':([0,28,],[4,30,]),'estructura':([0,],[5,]),'valores':([10,11,26,],[14,22,29,]),'valor':([10,11,23,26,],[16,16,27,16,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -31,16 +31,18 @@ _lr_productions = [
   ('sentencia -> asignacion','sentencia',1,'p_sentencia','sintactico.py',8),
   ('sentencia -> variable','sentencia',1,'p_sentencia','sintactico.py',9),
   ('sentencia -> estructura','sentencia',1,'p_sentencia','sintactico.py',10),
-  ('variable -> VAR IDENTIFICADOR ASSIGN valor','variable',4,'p_variable','sintactico.py',14),
-  ('estructura -> TYPE IDENTIFICADOR STRUCT LKEY RKEY','estructura',5,'p_estructura','sintactico.py',17),
-  ('asignacion -> IDENTIFICADOR ASSIGN valores','asignacion',3,'p_asignacion','sintactico.py',20),
-  ('impresion -> IMPRIMIR LPAREN valores RPAREN','impresion',4,'p_impresion','sintactico.py',24),
-  ('impresion -> IMPRIMIR LPAREN RPAREN','impresion',3,'p_impresion_sin_valor','sintactico.py',27),
-  ('valores -> valor','valores',1,'p_valores','sintactico.py',30),
-  ('valores -> valor COMA valores','valores',3,'p_valores','sintactico.py',31),
-  ('valor -> ENTERO','valor',1,'p_valor','sintactico.py',34),
-  ('valor -> FLOTANTE','valor',1,'p_valor','sintactico.py',35),
-  ('valor -> STRING','valor',1,'p_valor','sintactico.py',36),
-  ('valor -> BOOL','valor',1,'p_valor','sintactico.py',37),
-  ('valor -> IDENTIFICADOR','valor',1,'p_valor','sintactico.py',38),
+  ('estructura -> TYPE IDENTIFICADOR STRUCT LKEY variable RKEY','estructura',6,'p_estructura','sintactico.py',15),
+  ('estructura -> TYPE IDENTIFICADOR STRUCT LKEY RKEY','estructura',5,'p_estructura_vacia','sintactico.py',18),
+  ('variable -> VAR IDENTIFICADOR ASSIGN valor','variable',4,'p_variable','sintactico.py',21),
+  ('variable -> VAR IDENTIFICADOR','variable',2,'p_variable_vacia','sintactico.py',24),
+  ('asignacion -> IDENTIFICADOR ASSIGN valores','asignacion',3,'p_asignacion','sintactico.py',27),
+  ('impresion -> IMPRIMIR LPAREN valores RPAREN','impresion',4,'p_impresion','sintactico.py',32),
+  ('impresion -> IMPRIMIR LPAREN RPAREN','impresion',3,'p_impresion_sin_valor','sintactico.py',35),
+  ('valores -> valor','valores',1,'p_valores','sintactico.py',38),
+  ('valores -> valor COMA valores','valores',3,'p_valores','sintactico.py',39),
+  ('valor -> ENTERO','valor',1,'p_valor','sintactico.py',42),
+  ('valor -> FLOTANTE','valor',1,'p_valor','sintactico.py',43),
+  ('valor -> STRING','valor',1,'p_valor','sintactico.py',44),
+  ('valor -> BOOL','valor',1,'p_valor','sintactico.py',45),
+  ('valor -> IDENTIFICADOR','valor',1,'p_valor','sintactico.py',46),
 ]

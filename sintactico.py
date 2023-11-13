@@ -10,14 +10,22 @@ def p_sentencia(p):
                 | estructura
                 '''
 
+
+def p_estructura(p):
+    'estructura : TYPE IDENTIFICADOR STRUCT LKEY variable RKEY'
+
+def p_estructura_vacia(p):
+    'estructura : TYPE IDENTIFICADOR STRUCT LKEY RKEY'
+
 def p_variable(p):
     'variable : VAR IDENTIFICADOR ASSIGN valor'
 
-def p_estructura(p):
-    'estructura : TYPE IDENTIFICADOR STRUCT LKEY valores RKEY'
+def p_variable_vacia(p):
+    'variable : VAR IDENTIFICADOR'
 
 def p_asignacion(p):
     "asignacion : IDENTIFICADOR ASSIGN valores"
+
 
 
 def p_impresion(p):

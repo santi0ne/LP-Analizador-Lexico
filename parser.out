@@ -34,44 +34,46 @@ Rule 1     sentencia -> impresion
 Rule 2     sentencia -> asignacion
 Rule 3     sentencia -> variable
 Rule 4     sentencia -> estructura
-Rule 5     variable -> VAR IDENTIFICADOR ASSIGN valor
+Rule 5     estructura -> TYPE IDENTIFICADOR STRUCT LKEY variable RKEY
 Rule 6     estructura -> TYPE IDENTIFICADOR STRUCT LKEY RKEY
-Rule 7     asignacion -> IDENTIFICADOR ASSIGN valores
-Rule 8     impresion -> IMPRIMIR LPAREN valores RPAREN
-Rule 9     impresion -> IMPRIMIR LPAREN RPAREN
-Rule 10    valores -> valor
-Rule 11    valores -> valor COMA valores
-Rule 12    valor -> ENTERO
-Rule 13    valor -> FLOTANTE
-Rule 14    valor -> STRING
-Rule 15    valor -> BOOL
-Rule 16    valor -> IDENTIFICADOR
+Rule 7     variable -> VAR IDENTIFICADOR ASSIGN valor
+Rule 8     variable -> VAR IDENTIFICADOR
+Rule 9     asignacion -> IDENTIFICADOR ASSIGN valores
+Rule 10    impresion -> IMPRIMIR LPAREN valores RPAREN
+Rule 11    impresion -> IMPRIMIR LPAREN RPAREN
+Rule 12    valores -> valor
+Rule 13    valores -> valor COMA valores
+Rule 14    valor -> ENTERO
+Rule 15    valor -> FLOTANTE
+Rule 16    valor -> STRING
+Rule 17    valor -> BOOL
+Rule 18    valor -> IDENTIFICADOR
 
 Terminals, with rules where they appear
 
-ASSIGN               : 5 7
-BOOL                 : 15
+ASSIGN               : 7 9
+BOOL                 : 17
 CASE                 : 
 COLLON               : 
-COMA                 : 11
+COMA                 : 13
 DECREMENTO           : 
 DIFERENTEQUE         : 
 DIVISION             : 
 ELSE                 : 
-ENTERO               : 12
+ENTERO               : 14
 FLOAT32              : 
 FLOAT64              : 
-FLOTANTE             : 13
+FLOTANTE             : 15
 FOR                  : 
 FUNC                 : 
-IDENTIFICADOR        : 5 6 7 16
+IDENTIFICADOR        : 5 6 7 8 9 18
 IF                   : 
 IGUALQUE             : 
-IMPRIMIR             : 8 9
+IMPRIMIR             : 10 11
 INCREMENTO           : 
 INT                  : 
-LKEY                 : 6
-LPAREN               : 8 9
+LKEY                 : 5 6
+LPAREN               : 10 11
 MAYORIGUALQUE        : 
 MAYORQUE             : 
 MENORIGUALQUE        : 
@@ -80,14 +82,14 @@ MODULO               :
 MULTIPLICACION       : 
 RESTA                : 
 RETURN               : 
-RKEY                 : 6
-RPAREN               : 8 9
-STRING               : 14
-STRUCT               : 6
+RKEY                 : 5 6
+RPAREN               : 10 11
+STRING               : 16
+STRUCT               : 5 6
 SUMA                 : 
 SWITCH               : 
-TYPE                 : 6
-VAR                  : 5
+TYPE                 : 5 6
+VAR                  : 7 8
 error                : 
 
 Nonterminals, with rules where they appear
@@ -96,9 +98,9 @@ asignacion           : 2
 estructura           : 4
 impresion            : 1
 sentencia            : 0
-valor                : 5 10 11
-valores              : 7 8 11
-variable             : 3
+valor                : 7 12 13
+valores              : 9 10 13
+variable             : 3 5
 
 Parsing method: LALR
 
@@ -109,10 +111,12 @@ state 0
     (2) sentencia -> . asignacion
     (3) sentencia -> . variable
     (4) sentencia -> . estructura
-    (8) impresion -> . IMPRIMIR LPAREN valores RPAREN
-    (9) impresion -> . IMPRIMIR LPAREN RPAREN
-    (7) asignacion -> . IDENTIFICADOR ASSIGN valores
-    (5) variable -> . VAR IDENTIFICADOR ASSIGN valor
+    (10) impresion -> . IMPRIMIR LPAREN valores RPAREN
+    (11) impresion -> . IMPRIMIR LPAREN RPAREN
+    (9) asignacion -> . IDENTIFICADOR ASSIGN valores
+    (7) variable -> . VAR IDENTIFICADOR ASSIGN valor
+    (8) variable -> . VAR IDENTIFICADOR
+    (5) estructura -> . TYPE IDENTIFICADOR STRUCT LKEY variable RKEY
     (6) estructura -> . TYPE IDENTIFICADOR STRUCT LKEY RKEY
 
     IMPRIMIR        shift and go to state 6
@@ -162,28 +166,30 @@ state 5
 
 state 6
 
-    (8) impresion -> IMPRIMIR . LPAREN valores RPAREN
-    (9) impresion -> IMPRIMIR . LPAREN RPAREN
+    (10) impresion -> IMPRIMIR . LPAREN valores RPAREN
+    (11) impresion -> IMPRIMIR . LPAREN RPAREN
 
     LPAREN          shift and go to state 10
 
 
 state 7
 
-    (7) asignacion -> IDENTIFICADOR . ASSIGN valores
+    (9) asignacion -> IDENTIFICADOR . ASSIGN valores
 
     ASSIGN          shift and go to state 11
 
 
 state 8
 
-    (5) variable -> VAR . IDENTIFICADOR ASSIGN valor
+    (7) variable -> VAR . IDENTIFICADOR ASSIGN valor
+    (8) variable -> VAR . IDENTIFICADOR
 
     IDENTIFICADOR   shift and go to state 12
 
 
 state 9
 
+    (5) estructura -> TYPE . IDENTIFICADOR STRUCT LKEY variable RKEY
     (6) estructura -> TYPE . IDENTIFICADOR STRUCT LKEY RKEY
 
     IDENTIFICADOR   shift and go to state 13
@@ -191,15 +197,15 @@ state 9
 
 state 10
 
-    (8) impresion -> IMPRIMIR LPAREN . valores RPAREN
-    (9) impresion -> IMPRIMIR LPAREN . RPAREN
-    (10) valores -> . valor
-    (11) valores -> . valor COMA valores
-    (12) valor -> . ENTERO
-    (13) valor -> . FLOTANTE
-    (14) valor -> . STRING
-    (15) valor -> . BOOL
-    (16) valor -> . IDENTIFICADOR
+    (10) impresion -> IMPRIMIR LPAREN . valores RPAREN
+    (11) impresion -> IMPRIMIR LPAREN . RPAREN
+    (12) valores -> . valor
+    (13) valores -> . valor COMA valores
+    (14) valor -> . ENTERO
+    (15) valor -> . FLOTANTE
+    (16) valor -> . STRING
+    (17) valor -> . BOOL
+    (18) valor -> . IDENTIFICADOR
 
     RPAREN          shift and go to state 15
     ENTERO          shift and go to state 17
@@ -213,14 +219,14 @@ state 10
 
 state 11
 
-    (7) asignacion -> IDENTIFICADOR ASSIGN . valores
-    (10) valores -> . valor
-    (11) valores -> . valor COMA valores
-    (12) valor -> . ENTERO
-    (13) valor -> . FLOTANTE
-    (14) valor -> . STRING
-    (15) valor -> . BOOL
-    (16) valor -> . IDENTIFICADOR
+    (9) asignacion -> IDENTIFICADOR ASSIGN . valores
+    (12) valores -> . valor
+    (13) valores -> . valor COMA valores
+    (14) valor -> . ENTERO
+    (15) valor -> . FLOTANTE
+    (16) valor -> . STRING
+    (17) valor -> . BOOL
+    (18) valor -> . IDENTIFICADOR
 
     ENTERO          shift and go to state 17
     FLOTANTE        shift and go to state 18
@@ -233,13 +239,17 @@ state 11
 
 state 12
 
-    (5) variable -> VAR IDENTIFICADOR . ASSIGN valor
+    (7) variable -> VAR IDENTIFICADOR . ASSIGN valor
+    (8) variable -> VAR IDENTIFICADOR .
 
     ASSIGN          shift and go to state 23
+    $end            reduce using rule 8 (variable -> VAR IDENTIFICADOR .)
+    RKEY            reduce using rule 8 (variable -> VAR IDENTIFICADOR .)
 
 
 state 13
 
+    (5) estructura -> TYPE IDENTIFICADOR . STRUCT LKEY variable RKEY
     (6) estructura -> TYPE IDENTIFICADOR . STRUCT LKEY RKEY
 
     STRUCT          shift and go to state 24
@@ -247,88 +257,93 @@ state 13
 
 state 14
 
-    (8) impresion -> IMPRIMIR LPAREN valores . RPAREN
+    (10) impresion -> IMPRIMIR LPAREN valores . RPAREN
 
     RPAREN          shift and go to state 25
 
 
 state 15
 
-    (9) impresion -> IMPRIMIR LPAREN RPAREN .
+    (11) impresion -> IMPRIMIR LPAREN RPAREN .
 
-    $end            reduce using rule 9 (impresion -> IMPRIMIR LPAREN RPAREN .)
+    $end            reduce using rule 11 (impresion -> IMPRIMIR LPAREN RPAREN .)
 
 
 state 16
 
-    (10) valores -> valor .
-    (11) valores -> valor . COMA valores
+    (12) valores -> valor .
+    (13) valores -> valor . COMA valores
 
-    RPAREN          reduce using rule 10 (valores -> valor .)
-    $end            reduce using rule 10 (valores -> valor .)
+    RPAREN          reduce using rule 12 (valores -> valor .)
+    $end            reduce using rule 12 (valores -> valor .)
     COMA            shift and go to state 26
 
 
 state 17
 
-    (12) valor -> ENTERO .
+    (14) valor -> ENTERO .
 
-    COMA            reduce using rule 12 (valor -> ENTERO .)
-    RPAREN          reduce using rule 12 (valor -> ENTERO .)
-    $end            reduce using rule 12 (valor -> ENTERO .)
+    COMA            reduce using rule 14 (valor -> ENTERO .)
+    RPAREN          reduce using rule 14 (valor -> ENTERO .)
+    $end            reduce using rule 14 (valor -> ENTERO .)
+    RKEY            reduce using rule 14 (valor -> ENTERO .)
 
 
 state 18
 
-    (13) valor -> FLOTANTE .
+    (15) valor -> FLOTANTE .
 
-    COMA            reduce using rule 13 (valor -> FLOTANTE .)
-    RPAREN          reduce using rule 13 (valor -> FLOTANTE .)
-    $end            reduce using rule 13 (valor -> FLOTANTE .)
+    COMA            reduce using rule 15 (valor -> FLOTANTE .)
+    RPAREN          reduce using rule 15 (valor -> FLOTANTE .)
+    $end            reduce using rule 15 (valor -> FLOTANTE .)
+    RKEY            reduce using rule 15 (valor -> FLOTANTE .)
 
 
 state 19
 
-    (14) valor -> STRING .
+    (16) valor -> STRING .
 
-    COMA            reduce using rule 14 (valor -> STRING .)
-    RPAREN          reduce using rule 14 (valor -> STRING .)
-    $end            reduce using rule 14 (valor -> STRING .)
+    COMA            reduce using rule 16 (valor -> STRING .)
+    RPAREN          reduce using rule 16 (valor -> STRING .)
+    $end            reduce using rule 16 (valor -> STRING .)
+    RKEY            reduce using rule 16 (valor -> STRING .)
 
 
 state 20
 
-    (15) valor -> BOOL .
+    (17) valor -> BOOL .
 
-    COMA            reduce using rule 15 (valor -> BOOL .)
-    RPAREN          reduce using rule 15 (valor -> BOOL .)
-    $end            reduce using rule 15 (valor -> BOOL .)
+    COMA            reduce using rule 17 (valor -> BOOL .)
+    RPAREN          reduce using rule 17 (valor -> BOOL .)
+    $end            reduce using rule 17 (valor -> BOOL .)
+    RKEY            reduce using rule 17 (valor -> BOOL .)
 
 
 state 21
 
-    (16) valor -> IDENTIFICADOR .
+    (18) valor -> IDENTIFICADOR .
 
-    COMA            reduce using rule 16 (valor -> IDENTIFICADOR .)
-    RPAREN          reduce using rule 16 (valor -> IDENTIFICADOR .)
-    $end            reduce using rule 16 (valor -> IDENTIFICADOR .)
+    COMA            reduce using rule 18 (valor -> IDENTIFICADOR .)
+    RPAREN          reduce using rule 18 (valor -> IDENTIFICADOR .)
+    $end            reduce using rule 18 (valor -> IDENTIFICADOR .)
+    RKEY            reduce using rule 18 (valor -> IDENTIFICADOR .)
 
 
 state 22
 
-    (7) asignacion -> IDENTIFICADOR ASSIGN valores .
+    (9) asignacion -> IDENTIFICADOR ASSIGN valores .
 
-    $end            reduce using rule 7 (asignacion -> IDENTIFICADOR ASSIGN valores .)
+    $end            reduce using rule 9 (asignacion -> IDENTIFICADOR ASSIGN valores .)
 
 
 state 23
 
-    (5) variable -> VAR IDENTIFICADOR ASSIGN . valor
-    (12) valor -> . ENTERO
-    (13) valor -> . FLOTANTE
-    (14) valor -> . STRING
-    (15) valor -> . BOOL
-    (16) valor -> . IDENTIFICADOR
+    (7) variable -> VAR IDENTIFICADOR ASSIGN . valor
+    (14) valor -> . ENTERO
+    (15) valor -> . FLOTANTE
+    (16) valor -> . STRING
+    (17) valor -> . BOOL
+    (18) valor -> . IDENTIFICADOR
 
     ENTERO          shift and go to state 17
     FLOTANTE        shift and go to state 18
@@ -340,6 +355,7 @@ state 23
 
 state 24
 
+    (5) estructura -> TYPE IDENTIFICADOR STRUCT . LKEY variable RKEY
     (6) estructura -> TYPE IDENTIFICADOR STRUCT . LKEY RKEY
 
     LKEY            shift and go to state 28
@@ -347,21 +363,21 @@ state 24
 
 state 25
 
-    (8) impresion -> IMPRIMIR LPAREN valores RPAREN .
+    (10) impresion -> IMPRIMIR LPAREN valores RPAREN .
 
-    $end            reduce using rule 8 (impresion -> IMPRIMIR LPAREN valores RPAREN .)
+    $end            reduce using rule 10 (impresion -> IMPRIMIR LPAREN valores RPAREN .)
 
 
 state 26
 
-    (11) valores -> valor COMA . valores
-    (10) valores -> . valor
-    (11) valores -> . valor COMA valores
-    (12) valor -> . ENTERO
-    (13) valor -> . FLOTANTE
-    (14) valor -> . STRING
-    (15) valor -> . BOOL
-    (16) valor -> . IDENTIFICADOR
+    (13) valores -> valor COMA . valores
+    (12) valores -> . valor
+    (13) valores -> . valor COMA valores
+    (14) valor -> . ENTERO
+    (15) valor -> . FLOTANTE
+    (16) valor -> . STRING
+    (17) valor -> . BOOL
+    (18) valor -> . IDENTIFICADOR
 
     ENTERO          shift and go to state 17
     FLOTANTE        shift and go to state 18
@@ -374,29 +390,49 @@ state 26
 
 state 27
 
-    (5) variable -> VAR IDENTIFICADOR ASSIGN valor .
+    (7) variable -> VAR IDENTIFICADOR ASSIGN valor .
 
-    $end            reduce using rule 5 (variable -> VAR IDENTIFICADOR ASSIGN valor .)
+    $end            reduce using rule 7 (variable -> VAR IDENTIFICADOR ASSIGN valor .)
+    RKEY            reduce using rule 7 (variable -> VAR IDENTIFICADOR ASSIGN valor .)
 
 
 state 28
 
+    (5) estructura -> TYPE IDENTIFICADOR STRUCT LKEY . variable RKEY
     (6) estructura -> TYPE IDENTIFICADOR STRUCT LKEY . RKEY
+    (7) variable -> . VAR IDENTIFICADOR ASSIGN valor
+    (8) variable -> . VAR IDENTIFICADOR
 
-    RKEY            shift and go to state 30
+    RKEY            shift and go to state 31
+    VAR             shift and go to state 8
 
+    variable                       shift and go to state 30
 
 state 29
 
-    (11) valores -> valor COMA valores .
+    (13) valores -> valor COMA valores .
 
-    RPAREN          reduce using rule 11 (valores -> valor COMA valores .)
-    $end            reduce using rule 11 (valores -> valor COMA valores .)
+    RPAREN          reduce using rule 13 (valores -> valor COMA valores .)
+    $end            reduce using rule 13 (valores -> valor COMA valores .)
 
 
 state 30
 
+    (5) estructura -> TYPE IDENTIFICADOR STRUCT LKEY variable . RKEY
+
+    RKEY            shift and go to state 32
+
+
+state 31
+
     (6) estructura -> TYPE IDENTIFICADOR STRUCT LKEY RKEY .
 
     $end            reduce using rule 6 (estructura -> TYPE IDENTIFICADOR STRUCT LKEY RKEY .)
+
+
+state 32
+
+    (5) estructura -> TYPE IDENTIFICADOR STRUCT LKEY variable RKEY .
+
+    $end            reduce using rule 5 (estructura -> TYPE IDENTIFICADOR STRUCT LKEY variable RKEY .)
 
