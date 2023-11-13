@@ -7,10 +7,14 @@ def p_sentencia(p):
     '''sentencia : impresion
                 | asignacion
                 | variable
+                | estructura
                 '''
-                
+
 def p_variable(p):
     'variable : VAR IDENTIFICADOR ASSIGN valor'
+
+def p_estructura(p):
+    'estructura : TYPE IDENTIFICADOR STRUCT LKEY valores RKEY'
 
 def p_asignacion(p):
     "asignacion : IDENTIFICADOR ASSIGN valores"
@@ -37,6 +41,7 @@ def p_valor(p):
 def p_error(p):
     print("Error de sintaxis")
 
+'''
 # Build the parser
 parser = yacc.yacc()
 
@@ -49,3 +54,4 @@ while True:
    result = parser.parse(s)
    if result != None:
        print(result)
+       '''

@@ -21,7 +21,9 @@ reserved = {
    'func':'FUNC',        # Johnny Rodriguez
    'return':'RETURN',    # Johnny Rodriguez
    'switch':'SWITCH',    # Johnny Rodriguez
-   'case':'case'         # Johnny Rodriguez
+   'case':'CASE',         # Johnny Rodriguez
+   'struct':'STRUCT',     # Nicolas Coronel
+   'type':'TYPE'         # Nicolas Coronel
 }
 
 # Secuencia de tokens
@@ -48,8 +50,8 @@ tokens = (
     'MODULO',            # Nicolas Coronel
     'IGUALQUE',          # Nicolas Coronel
     'DIFERENTEQUE',      # Nicolas Coronel
-    'COMA',
-    'IMPRIMIR'
+    'COMA',              # Jeremy Martinez
+    'IMPRIMIR',           # Jeremy Martinez
 )+tuple(reserved.values())
 
 # Expresiones Regulares simples para símbolos
@@ -107,15 +109,13 @@ def t_error(t):
 
 # Construye el lexer
 lexer = lex.lex()
-'''
+
 # Código para analizar
 # code = switch_declaration()
-code = test_incremento_expression()
+# code = test_mayorQue()
 # Enviando el código
-lexer.input(code)
+# lexer.input(code)
 
 # Tokenizar
-for token in lexer:
-  print(token)
-
-'''
+# for token in lexer:
+#     print(token)
