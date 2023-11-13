@@ -1,0 +1,353 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    COLLON
+    DECREMENTO
+    DIFERENTEQUE
+    DIVISION
+    ELSE
+    FLOAT32
+    FLOAT64
+    FOR
+    FUNC
+    IF
+    IGUALQUE
+    INCREMENTO
+    INT
+    LKEY
+    MAYORIGUALQUE
+    MAYORQUE
+    MENORIGUALQUE
+    MENORQUE
+    MODULO
+    MULTIPLICACION
+    RESTA
+    RETURN
+    RKEY
+    SUMA
+    SWITCH
+    case
+
+Grammar
+
+Rule 0     S' -> sentencia
+Rule 1     sentencia -> impresion
+Rule 2     sentencia -> asignacion
+Rule 3     sentencia -> variable
+Rule 4     variable -> VAR IDENTIFICADOR ASSIGN valor
+Rule 5     asignacion -> IDENTIFICADOR ASSIGN valores
+Rule 6     impresion -> IMPRIMIR LPAREN valores RPAREN
+Rule 7     impresion -> IMPRIMIR LPAREN RPAREN
+Rule 8     valores -> valor
+Rule 9     valores -> valor COMA valores
+Rule 10    valor -> ENTERO
+Rule 11    valor -> FLOTANTE
+Rule 12    valor -> STRING
+Rule 13    valor -> BOOL
+Rule 14    valor -> IDENTIFICADOR
+
+Terminals, with rules where they appear
+
+ASSIGN               : 4 5
+BOOL                 : 13
+COLLON               : 
+COMA                 : 9
+DECREMENTO           : 
+DIFERENTEQUE         : 
+DIVISION             : 
+ELSE                 : 
+ENTERO               : 10
+FLOAT32              : 
+FLOAT64              : 
+FLOTANTE             : 11
+FOR                  : 
+FUNC                 : 
+IDENTIFICADOR        : 4 5 14
+IF                   : 
+IGUALQUE             : 
+IMPRIMIR             : 6 7
+INCREMENTO           : 
+INT                  : 
+LKEY                 : 
+LPAREN               : 6 7
+MAYORIGUALQUE        : 
+MAYORQUE             : 
+MENORIGUALQUE        : 
+MENORQUE             : 
+MODULO               : 
+MULTIPLICACION       : 
+RESTA                : 
+RETURN               : 
+RKEY                 : 
+RPAREN               : 6 7
+STRING               : 12
+SUMA                 : 
+SWITCH               : 
+VAR                  : 4
+case                 : 
+error                : 
+
+Nonterminals, with rules where they appear
+
+asignacion           : 2
+impresion            : 1
+sentencia            : 0
+valor                : 4 8 9
+valores              : 5 6 9
+variable             : 3
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . sentencia
+    (1) sentencia -> . impresion
+    (2) sentencia -> . asignacion
+    (3) sentencia -> . variable
+    (6) impresion -> . IMPRIMIR LPAREN valores RPAREN
+    (7) impresion -> . IMPRIMIR LPAREN RPAREN
+    (5) asignacion -> . IDENTIFICADOR ASSIGN valores
+    (4) variable -> . VAR IDENTIFICADOR ASSIGN valor
+
+    IMPRIMIR        shift and go to state 5
+    IDENTIFICADOR   shift and go to state 6
+    VAR             shift and go to state 7
+
+    sentencia                      shift and go to state 1
+    impresion                      shift and go to state 2
+    asignacion                     shift and go to state 3
+    variable                       shift and go to state 4
+
+state 1
+
+    (0) S' -> sentencia .
+
+
+
+state 2
+
+    (1) sentencia -> impresion .
+
+    $end            reduce using rule 1 (sentencia -> impresion .)
+
+
+state 3
+
+    (2) sentencia -> asignacion .
+
+    $end            reduce using rule 2 (sentencia -> asignacion .)
+
+
+state 4
+
+    (3) sentencia -> variable .
+
+    $end            reduce using rule 3 (sentencia -> variable .)
+
+
+state 5
+
+    (6) impresion -> IMPRIMIR . LPAREN valores RPAREN
+    (7) impresion -> IMPRIMIR . LPAREN RPAREN
+
+    LPAREN          shift and go to state 8
+
+
+state 6
+
+    (5) asignacion -> IDENTIFICADOR . ASSIGN valores
+
+    ASSIGN          shift and go to state 9
+
+
+state 7
+
+    (4) variable -> VAR . IDENTIFICADOR ASSIGN valor
+
+    IDENTIFICADOR   shift and go to state 10
+
+
+state 8
+
+    (6) impresion -> IMPRIMIR LPAREN . valores RPAREN
+    (7) impresion -> IMPRIMIR LPAREN . RPAREN
+    (8) valores -> . valor
+    (9) valores -> . valor COMA valores
+    (10) valor -> . ENTERO
+    (11) valor -> . FLOTANTE
+    (12) valor -> . STRING
+    (13) valor -> . BOOL
+    (14) valor -> . IDENTIFICADOR
+
+    RPAREN          shift and go to state 12
+    ENTERO          shift and go to state 14
+    FLOTANTE        shift and go to state 15
+    STRING          shift and go to state 16
+    BOOL            shift and go to state 17
+    IDENTIFICADOR   shift and go to state 18
+
+    valores                        shift and go to state 11
+    valor                          shift and go to state 13
+
+state 9
+
+    (5) asignacion -> IDENTIFICADOR ASSIGN . valores
+    (8) valores -> . valor
+    (9) valores -> . valor COMA valores
+    (10) valor -> . ENTERO
+    (11) valor -> . FLOTANTE
+    (12) valor -> . STRING
+    (13) valor -> . BOOL
+    (14) valor -> . IDENTIFICADOR
+
+    ENTERO          shift and go to state 14
+    FLOTANTE        shift and go to state 15
+    STRING          shift and go to state 16
+    BOOL            shift and go to state 17
+    IDENTIFICADOR   shift and go to state 18
+
+    valores                        shift and go to state 19
+    valor                          shift and go to state 13
+
+state 10
+
+    (4) variable -> VAR IDENTIFICADOR . ASSIGN valor
+
+    ASSIGN          shift and go to state 20
+
+
+state 11
+
+    (6) impresion -> IMPRIMIR LPAREN valores . RPAREN
+
+    RPAREN          shift and go to state 21
+
+
+state 12
+
+    (7) impresion -> IMPRIMIR LPAREN RPAREN .
+
+    $end            reduce using rule 7 (impresion -> IMPRIMIR LPAREN RPAREN .)
+
+
+state 13
+
+    (8) valores -> valor .
+    (9) valores -> valor . COMA valores
+
+    RPAREN          reduce using rule 8 (valores -> valor .)
+    $end            reduce using rule 8 (valores -> valor .)
+    COMA            shift and go to state 22
+
+
+state 14
+
+    (10) valor -> ENTERO .
+
+    COMA            reduce using rule 10 (valor -> ENTERO .)
+    RPAREN          reduce using rule 10 (valor -> ENTERO .)
+    $end            reduce using rule 10 (valor -> ENTERO .)
+
+
+state 15
+
+    (11) valor -> FLOTANTE .
+
+    COMA            reduce using rule 11 (valor -> FLOTANTE .)
+    RPAREN          reduce using rule 11 (valor -> FLOTANTE .)
+    $end            reduce using rule 11 (valor -> FLOTANTE .)
+
+
+state 16
+
+    (12) valor -> STRING .
+
+    COMA            reduce using rule 12 (valor -> STRING .)
+    RPAREN          reduce using rule 12 (valor -> STRING .)
+    $end            reduce using rule 12 (valor -> STRING .)
+
+
+state 17
+
+    (13) valor -> BOOL .
+
+    COMA            reduce using rule 13 (valor -> BOOL .)
+    RPAREN          reduce using rule 13 (valor -> BOOL .)
+    $end            reduce using rule 13 (valor -> BOOL .)
+
+
+state 18
+
+    (14) valor -> IDENTIFICADOR .
+
+    COMA            reduce using rule 14 (valor -> IDENTIFICADOR .)
+    RPAREN          reduce using rule 14 (valor -> IDENTIFICADOR .)
+    $end            reduce using rule 14 (valor -> IDENTIFICADOR .)
+
+
+state 19
+
+    (5) asignacion -> IDENTIFICADOR ASSIGN valores .
+
+    $end            reduce using rule 5 (asignacion -> IDENTIFICADOR ASSIGN valores .)
+
+
+state 20
+
+    (4) variable -> VAR IDENTIFICADOR ASSIGN . valor
+    (10) valor -> . ENTERO
+    (11) valor -> . FLOTANTE
+    (12) valor -> . STRING
+    (13) valor -> . BOOL
+    (14) valor -> . IDENTIFICADOR
+
+    ENTERO          shift and go to state 14
+    FLOTANTE        shift and go to state 15
+    STRING          shift and go to state 16
+    BOOL            shift and go to state 17
+    IDENTIFICADOR   shift and go to state 18
+
+    valor                          shift and go to state 23
+
+state 21
+
+    (6) impresion -> IMPRIMIR LPAREN valores RPAREN .
+
+    $end            reduce using rule 6 (impresion -> IMPRIMIR LPAREN valores RPAREN .)
+
+
+state 22
+
+    (9) valores -> valor COMA . valores
+    (8) valores -> . valor
+    (9) valores -> . valor COMA valores
+    (10) valor -> . ENTERO
+    (11) valor -> . FLOTANTE
+    (12) valor -> . STRING
+    (13) valor -> . BOOL
+    (14) valor -> . IDENTIFICADOR
+
+    ENTERO          shift and go to state 14
+    FLOTANTE        shift and go to state 15
+    STRING          shift and go to state 16
+    BOOL            shift and go to state 17
+    IDENTIFICADOR   shift and go to state 18
+
+    valor                          shift and go to state 13
+    valores                        shift and go to state 24
+
+state 23
+
+    (4) variable -> VAR IDENTIFICADOR ASSIGN valor .
+
+    $end            reduce using rule 4 (variable -> VAR IDENTIFICADOR ASSIGN valor .)
+
+
+state 24
+
+    (9) valores -> valor COMA valores .
+
+    RPAREN          reduce using rule 9 (valores -> valor COMA valores .)
+    $end            reduce using rule 9 (valores -> valor COMA valores .)
+
