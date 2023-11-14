@@ -64,11 +64,11 @@ def p_ingreso(p):
 def p_ingreso_sin_valor(p):
     'ingreso : INGRESO LPAREN RPAREN'
 
-
 def p_valores(p):
     '''valores : valor
                 | valor COMA valores
                 '''
+    
 def p_valor(p):
     '''valor : ENTERO
             | FLOTANTE
@@ -76,6 +76,7 @@ def p_valor(p):
             | BOOLEANO
             | IDENTIFICADOR
             '''
+    
 def p_parametros(p):
     '''parametros : parametro
                   | parametro COMA parametros
