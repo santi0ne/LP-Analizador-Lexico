@@ -4,7 +4,11 @@ import ply.yacc as yacc
 from analizadores.lexico import tokens
 
 def p_sentencia(p):
-    '''sentencia : impresion
+    '''sentencia : bloques 
+                | funcion
+                '''
+def p_bloques(p):
+    '''bloques : impresion
                 | ingreso
                 | asignacion
                 | estructura
@@ -17,21 +21,23 @@ def p_estructura(p):
 def p_estructura_vacia(p):
     'estructura : TYPE IDENTIFICADOR STRUCT LKEY RKEY'
 
+def p_def_funcion_con_parametros_con_return(p):
+    'funcion : FUNC IDENTIFICADOR LPAREN parametros RPAREN tdato LKEY sentencia RETURN IDENTIFICADOR RKEY' 
+
+def p_def_funcion_con_parametros_sin_return(p):
+    'funcion : FUNC IDENTIFICADOR LPAREN parametros RPAREN LKEY sentencia RKEY'
+
+def p_def_funcion_sin_parametros_con_return(p):
+    'funcion : FUNC IDENTIFICADOR LPAREN RPAREN tdato LKEY sentencia RETURN IDENTIFICADOR RKEY'
+
+def p_def_funcion_sin_parametros_sin_return(p):
+    'funcion : FUNC IDENTIFICADOR LPAREN RPAREN LKEY sentencia RKEY'
+
 def p_declaracionVariable(p):
-    '''declaracion : VAR IDENTIFICADOR STRING ASSIGN valor
-                | VAR IDENTIFICADOR INT ASSIGN valor
-                | VAR IDENTIFICADOR FLOAT32 ASSIGN valor
-                | VAR IDENTIFICADOR FLOAT64 ASSIGN valor
-                | VAR IDENTIFICADOR BOOL ASSIGN valor
-                '''
+    'declaracion : VAR IDENTIFICADOR tdato ASSIGN valor'
 
 def p_declaracionVariable_vacia(p):
-    '''declaracion : VAR IDENTIFICADOR INT
-                | VAR IDENTIFICADOR STRING
-                | VAR IDENTIFICADOR FLOAT32
-                | VAR IDENTIFICADOR FLOAT64
-                | VAR IDENTIFICADOR BOOL
-                '''
+    'declaracion : VAR IDENTIFICADOR tdato'
                 
 def p_declaracionVariable_simple(p):
     '''declaracion : IDENTIFICADOR COLLON ASSIGN ENTERO
@@ -41,18 +47,13 @@ def p_declaracionVariable_simple(p):
                 '''
                 
 def p_declaracionVariable_estructura(p):
-    '''declaracion : IDENTIFICADOR INT
-                | IDENTIFICADOR STRING
-                | IDENTIFICADOR FLOAT32
-                | IDENTIFICADOR FLOAT64
-                | IDENTIFICADOR BOOL
-                '''
+    'declaracion : IDENTIFICADOR tdato'
+
 def p_asignacion(p):
-    '''asignacion : IDENTIFICADOR ASSIGN valores
-                    '''
+    'asignacion : IDENTIFICADOR ASSIGN valores'
 
 def p_impresion(p):
-    "impresion : IMPRIMIR LPAREN valores RPAREN "
+    'impresion : IMPRIMIR LPAREN valores RPAREN'
 
 def p_impresion_sin_valor(p):
     'impresion : IMPRIMIR LPAREN RPAREN'
@@ -75,6 +76,21 @@ def p_valor(p):
             | BOOLEANO
             | IDENTIFICADOR
             '''
+def p_parametros(p):
+    '''parametros : parametro
+                  | parametro COMA parametros
+                  '''
+
+def p_parametro(p):
+    'parametro : IDENTIFICADOR tdato'
+
+def p_tdatos(p):
+    '''tdato : INT
+             | STRING
+             | FLOAT32
+             | FLOAT64
+             | BOOL
+             '''
     
 def p_error(p):
     print("Error de sintaxis")
