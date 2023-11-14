@@ -1,6 +1,6 @@
 import ply.yacc as yacc
-from lexico import tokens
-from sintactico import *
+from analizadores.lexico import tokens
+from analizadores.sintactico import *
 
 # Build the parser
 parser = yacc.yacc()

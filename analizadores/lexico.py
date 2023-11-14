@@ -4,7 +4,7 @@
 
 import ply.lex as lex
 
-from pruebas import *
+from pruebas.pruebas_lex import *
 
 # Palabras Reservadas
 reserved = {
@@ -79,6 +79,7 @@ t_COMA = r','
 def t_IMPRIMIR(t):
     r'fmt\.Println'
     return t
+
 # Expresiones Regulares para números y variables, incluye cast
 def t_IDENTIFICADOR(t):  # Johnny Rodriguez
     r'[a-z_]\w*'
