@@ -5,6 +5,7 @@ from analizadores.lexico import tokens
 
 def p_sentencia(p):
     '''sentencia : impresion
+                | ingreso
                 | asignacion
                 | estructura
                 | declaracion
@@ -55,6 +56,13 @@ def p_impresion(p):
 
 def p_impresion_sin_valor(p):
     'impresion : IMPRIMIR LPAREN RPAREN'
+
+def p_ingreso(p):
+    'ingreso : INGRESO LPAREN valores RPAREN'
+
+def p_ingreso_sin_valor(p):
+    'ingreso : INGRESO LPAREN RPAREN'
+
 
 def p_valores(p):
     '''valores : valor

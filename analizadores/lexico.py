@@ -39,6 +39,7 @@ tokens = (
     'LKEY',              # Johnny Rodriguez
     'RKEY',              # Johnny Rodriguez
     'COLLON',            # Johnny Rodriguez
+    'INGRESO',           # Johnny Rodriguez
     'SUMA',              # Jeremy Martinez
     'RESTA',             # Jeremy Martinez
     'MULTIPLICACION',    # Jeremy Martinez
@@ -79,7 +80,11 @@ t_DIFERENTEQUE = r'!='
 t_COMA = r','
 
 def t_IMPRIMIR(t):
-    r'fmt\.Println'
+    r'fmt\.Print(ln)?'
+    return t
+
+def t_INGRESO(t):
+    r'fmt\.Scan(ln)?'
     return t
 
 # Expresiones Regulares para números y variables, incluye cast
