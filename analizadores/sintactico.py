@@ -40,10 +40,7 @@ def p_declaracionVariable_vacia(p):
     'declaracion : VAR IDENTIFICADOR tdato'
                 
 def p_declaracionVariable_simple(p):
-    '''declaracion : IDENTIFICADOR COLLON ASSIGN ENTERO
-                | IDENTIFICADOR COLLON ASSIGN IDENTIFICADOR
-                | IDENTIFICADOR COLLON ASSIGN BOOL
-                | IDENTIFICADOR COLLON ASSIGN FLOTANTE
+    '''declaracion : IDENTIFICADOR COLLON ASSIGN ENTERO tdato
                 '''
                 
 def p_declaracionVariable_estructura(p):
