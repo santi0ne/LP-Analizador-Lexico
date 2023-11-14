@@ -31,6 +31,8 @@ tokens = (
     'IDENTIFICADOR',     # Johnny Rodriguez
     'ENTERO',            # Johnny Rodriguez
     'FLOTANTE',          # Johnny Rodriguez
+    'CADENA',            # Johnny Rodriguez
+    'BOOLEANO',          # Johnny Rodriguez
     'ASSIGN',            # Johnny Rodriguez
     'LPAREN',            # Johnny Rodriguez
     'RPAREN',            # Johnny Rodriguez
@@ -93,6 +95,15 @@ def t_FLOTANTE(t):
 def t_ENTERO(t):
     r'-?\d+'
     t.value = int(t.value)    
+    return t
+
+def t_CADENA(t):
+    r'\".+\"'
+    #t.value = t.value[1:-1]
+    return t
+
+def t_BOOLEANO(t):
+    r'True|False'
     return t
 
 # Expresión regular para reconocer saltos de línea

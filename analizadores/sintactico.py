@@ -23,14 +23,6 @@ def p_declaracionVariable(p):
                 | VAR IDENTIFICADOR FLOAT64 ASSIGN valor
                 | VAR IDENTIFICADOR BOOL ASSIGN valor
                 '''
-    
-def p_declaracionVariable(p):
-    '''declaracion : VAR IDENTIFICADOR STRING ASSIGN valor
-                | VAR IDENTIFICADOR INT ASSIGN valor
-                | VAR IDENTIFICADOR FLOAT32 ASSIGN valor
-                | VAR IDENTIFICADOR FLOAT64 ASSIGN valor
-                | VAR IDENTIFICADOR BOOL ASSIGN valor
-                '''
 
 def p_declaracionVariable_vacia(p):
     '''declaracion : VAR IDENTIFICADOR INT
@@ -71,8 +63,8 @@ def p_valores(p):
 def p_valor(p):
     '''valor : ENTERO
             | FLOTANTE
-            | STRING
-            | BOOL
+            | CADENA
+            | BOOLEANO
             | IDENTIFICADOR
             '''
     

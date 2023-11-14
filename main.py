@@ -1,5 +1,5 @@
 import ply.yacc as yacc
-from analizadores.lexico import tokens
+from analizadores.lexico import *
 from analizadores.sintactico import *
 
 # Build the parser
