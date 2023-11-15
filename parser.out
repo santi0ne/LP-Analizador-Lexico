@@ -1,0 +1,1167 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    CASE
+    DECREMENTO
+    DIFERENTEQUE
+    DIVISION
+    ELSE
+    FOR
+    IF
+    IGUALQUE
+    INCREMENTO
+    MAYORIGUALQUE
+    MAYORQUE
+    MENORIGUALQUE
+    MENORQUE
+    MODULO
+    MULTIPLICACION
+    RESTA
+    SUMA
+    SWITCH
+
+Grammar
+
+Rule 0     S' -> sentencia
+Rule 1     sentencia -> bloques
+Rule 2     sentencia -> funcion
+Rule 3     bloques -> impresion
+Rule 4     bloques -> ingreso
+Rule 5     bloques -> asignacion
+Rule 6     bloques -> estructura
+Rule 7     bloques -> declaracion
+Rule 8     estructura -> TYPE IDENTIFICADOR STRUCT LKEY sentencia RKEY
+Rule 9     estructura -> TYPE IDENTIFICADOR STRUCT LKEY RKEY
+Rule 10    funcion -> FUNC IDENTIFICADOR LPAREN parametros RPAREN tdato LKEY sentencia RETURN IDENTIFICADOR RKEY
+Rule 11    funcion -> FUNC IDENTIFICADOR LPAREN parametros RPAREN LKEY sentencia RKEY
+Rule 12    funcion -> FUNC IDENTIFICADOR LPAREN RPAREN tdato LKEY sentencia RETURN IDENTIFICADOR RKEY
+Rule 13    funcion -> FUNC IDENTIFICADOR LPAREN RPAREN LKEY sentencia RKEY
+Rule 14    declaracion -> VAR IDENTIFICADOR tdato ASSIGN valor
+Rule 15    declaracion -> VAR IDENTIFICADOR tdato
+Rule 16    declaracion -> IDENTIFICADOR COLLON ASSIGN valor
+Rule 17    declaracion -> IDENTIFICADOR tdato
+Rule 18    asignacion -> IDENTIFICADOR ASSIGN valores
+Rule 19    impresion -> IMPRIMIR LPAREN valores RPAREN
+Rule 20    impresion -> IMPRIMIR LPAREN RPAREN
+Rule 21    ingreso -> INGRESO LPAREN valores RPAREN
+Rule 22    ingreso -> INGRESO LPAREN RPAREN
+Rule 23    valores -> valor
+Rule 24    valores -> valor COMA valores
+Rule 25    valor -> ENTERO
+Rule 26    valor -> FLOTANTE
+Rule 27    valor -> CADENA
+Rule 28    valor -> BOOLEANO
+Rule 29    valor -> IDENTIFICADOR
+Rule 30    parametros -> parametro
+Rule 31    parametros -> parametro COMA parametros
+Rule 32    parametro -> IDENTIFICADOR tdato
+Rule 33    tdato -> INT
+Rule 34    tdato -> STRING
+Rule 35    tdato -> FLOAT32
+Rule 36    tdato -> FLOAT64
+Rule 37    tdato -> BOOL
+
+Terminals, with rules where they appear
+
+ASSIGN               : 14 16 18
+BOOL                 : 37
+BOOLEANO             : 28
+CADENA               : 27
+CASE                 : 
+COLLON               : 16
+COMA                 : 24 31
+DECREMENTO           : 
+DIFERENTEQUE         : 
+DIVISION             : 
+ELSE                 : 
+ENTERO               : 25
+FLOAT32              : 35
+FLOAT64              : 36
+FLOTANTE             : 26
+FOR                  : 
+FUNC                 : 10 11 12 13
+IDENTIFICADOR        : 8 9 10 10 11 12 12 13 14 15 16 17 18 29 32
+IF                   : 
+IGUALQUE             : 
+IMPRIMIR             : 19 20
+INCREMENTO           : 
+INGRESO              : 21 22
+INT                  : 33
+LKEY                 : 8 9 10 11 12 13
+LPAREN               : 10 11 12 13 19 20 21 22
+MAYORIGUALQUE        : 
+MAYORQUE             : 
+MENORIGUALQUE        : 
+MENORQUE             : 
+MODULO               : 
+MULTIPLICACION       : 
+RESTA                : 
+RETURN               : 10 12
+RKEY                 : 8 9 10 11 12 13
+RPAREN               : 10 11 12 13 19 20 21 22
+STRING               : 34
+STRUCT               : 8 9
+SUMA                 : 
+SWITCH               : 
+TYPE                 : 8 9
+VAR                  : 14 15
+error                : 
+
+Nonterminals, with rules where they appear
+
+asignacion           : 5
+bloques              : 1
+declaracion          : 7
+estructura           : 6
+funcion              : 2
+impresion            : 3
+ingreso              : 4
+parametro            : 30 31
+parametros           : 10 11 31
+sentencia            : 8 10 11 12 13 0
+tdato                : 10 12 14 15 17 32
+valor                : 14 16 23 24
+valores              : 18 19 21 24
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . sentencia
+    (1) sentencia -> . bloques
+    (2) sentencia -> . funcion
+    (3) bloques -> . impresion
+    (4) bloques -> . ingreso
+    (5) bloques -> . asignacion
+    (6) bloques -> . estructura
+    (7) bloques -> . declaracion
+    (10) funcion -> . FUNC IDENTIFICADOR LPAREN parametros RPAREN tdato LKEY sentencia RETURN IDENTIFICADOR RKEY
+    (11) funcion -> . FUNC IDENTIFICADOR LPAREN parametros RPAREN LKEY sentencia RKEY
+    (12) funcion -> . FUNC IDENTIFICADOR LPAREN RPAREN tdato LKEY sentencia RETURN IDENTIFICADOR RKEY
+    (13) funcion -> . FUNC IDENTIFICADOR LPAREN RPAREN LKEY sentencia RKEY
+    (19) impresion -> . IMPRIMIR LPAREN valores RPAREN
+    (20) impresion -> . IMPRIMIR LPAREN RPAREN
+    (21) ingreso -> . INGRESO LPAREN valores RPAREN
+    (22) ingreso -> . INGRESO LPAREN RPAREN
+    (18) asignacion -> . IDENTIFICADOR ASSIGN valores
+    (8) estructura -> . TYPE IDENTIFICADOR STRUCT LKEY sentencia RKEY
+    (9) estructura -> . TYPE IDENTIFICADOR STRUCT LKEY RKEY
+    (14) declaracion -> . VAR IDENTIFICADOR tdato ASSIGN valor
+    (15) declaracion -> . VAR IDENTIFICADOR tdato
+    (16) declaracion -> . IDENTIFICADOR COLLON ASSIGN valor
+    (17) declaracion -> . IDENTIFICADOR tdato
+
+    FUNC            shift and go to state 9
+    IMPRIMIR        shift and go to state 11
+    INGRESO         shift and go to state 12
+    IDENTIFICADOR   shift and go to state 10
+    TYPE            shift and go to state 13
+    VAR             shift and go to state 14
+
+    sentencia                      shift and go to state 1
+    bloques                        shift and go to state 2
+    funcion                        shift and go to state 3
+    impresion                      shift and go to state 4
+    ingreso                        shift and go to state 5
+    asignacion                     shift and go to state 6
+    estructura                     shift and go to state 7
+    declaracion                    shift and go to state 8
+
+state 1
+
+    (0) S' -> sentencia .
+
+
+
+state 2
+
+    (1) sentencia -> bloques .
+
+    $end            reduce using rule 1 (sentencia -> bloques .)
+    RKEY            reduce using rule 1 (sentencia -> bloques .)
+    RETURN          reduce using rule 1 (sentencia -> bloques .)
+
+
+state 3
+
+    (2) sentencia -> funcion .
+
+    $end            reduce using rule 2 (sentencia -> funcion .)
+    RKEY            reduce using rule 2 (sentencia -> funcion .)
+    RETURN          reduce using rule 2 (sentencia -> funcion .)
+
+
+state 4
+
+    (3) bloques -> impresion .
+
+    $end            reduce using rule 3 (bloques -> impresion .)
+    RKEY            reduce using rule 3 (bloques -> impresion .)
+    RETURN          reduce using rule 3 (bloques -> impresion .)
+
+
+state 5
+
+    (4) bloques -> ingreso .
+
+    $end            reduce using rule 4 (bloques -> ingreso .)
+    RKEY            reduce using rule 4 (bloques -> ingreso .)
+    RETURN          reduce using rule 4 (bloques -> ingreso .)
+
+
+state 6
+
+    (5) bloques -> asignacion .
+
+    $end            reduce using rule 5 (bloques -> asignacion .)
+    RKEY            reduce using rule 5 (bloques -> asignacion .)
+    RETURN          reduce using rule 5 (bloques -> asignacion .)
+
+
+state 7
+
+    (6) bloques -> estructura .
+
+    $end            reduce using rule 6 (bloques -> estructura .)
+    RKEY            reduce using rule 6 (bloques -> estructura .)
+    RETURN          reduce using rule 6 (bloques -> estructura .)
+
+
+state 8
+
+    (7) bloques -> declaracion .
+
+    $end            reduce using rule 7 (bloques -> declaracion .)
+    RKEY            reduce using rule 7 (bloques -> declaracion .)
+    RETURN          reduce using rule 7 (bloques -> declaracion .)
+
+
+state 9
+
+    (10) funcion -> FUNC . IDENTIFICADOR LPAREN parametros RPAREN tdato LKEY sentencia RETURN IDENTIFICADOR RKEY
+    (11) funcion -> FUNC . IDENTIFICADOR LPAREN parametros RPAREN LKEY sentencia RKEY
+    (12) funcion -> FUNC . IDENTIFICADOR LPAREN RPAREN tdato LKEY sentencia RETURN IDENTIFICADOR RKEY
+    (13) funcion -> FUNC . IDENTIFICADOR LPAREN RPAREN LKEY sentencia RKEY
+
+    IDENTIFICADOR   shift and go to state 15
+
+
+state 10
+
+    (18) asignacion -> IDENTIFICADOR . ASSIGN valores
+    (16) declaracion -> IDENTIFICADOR . COLLON ASSIGN valor
+    (17) declaracion -> IDENTIFICADOR . tdato
+    (33) tdato -> . INT
+    (34) tdato -> . STRING
+    (35) tdato -> . FLOAT32
+    (36) tdato -> . FLOAT64
+    (37) tdato -> . BOOL
+
+    ASSIGN          shift and go to state 16
+    COLLON          shift and go to state 17
+    INT             shift and go to state 19
+    STRING          shift and go to state 20
+    FLOAT32         shift and go to state 21
+    FLOAT64         shift and go to state 22
+    BOOL            shift and go to state 23
+
+    tdato                          shift and go to state 18
+
+state 11
+
+    (19) impresion -> IMPRIMIR . LPAREN valores RPAREN
+    (20) impresion -> IMPRIMIR . LPAREN RPAREN
+
+    LPAREN          shift and go to state 24
+
+
+state 12
+
+    (21) ingreso -> INGRESO . LPAREN valores RPAREN
+    (22) ingreso -> INGRESO . LPAREN RPAREN
+
+    LPAREN          shift and go to state 25
+
+
+state 13
+
+    (8) estructura -> TYPE . IDENTIFICADOR STRUCT LKEY sentencia RKEY
+    (9) estructura -> TYPE . IDENTIFICADOR STRUCT LKEY RKEY
+
+    IDENTIFICADOR   shift and go to state 26
+
+
+state 14
+
+    (14) declaracion -> VAR . IDENTIFICADOR tdato ASSIGN valor
+    (15) declaracion -> VAR . IDENTIFICADOR tdato
+
+    IDENTIFICADOR   shift and go to state 27
+
+
+state 15
+
+    (10) funcion -> FUNC IDENTIFICADOR . LPAREN parametros RPAREN tdato LKEY sentencia RETURN IDENTIFICADOR RKEY
+    (11) funcion -> FUNC IDENTIFICADOR . LPAREN parametros RPAREN LKEY sentencia RKEY
+    (12) funcion -> FUNC IDENTIFICADOR . LPAREN RPAREN tdato LKEY sentencia RETURN IDENTIFICADOR RKEY
+    (13) funcion -> FUNC IDENTIFICADOR . LPAREN RPAREN LKEY sentencia RKEY
+
+    LPAREN          shift and go to state 28
+
+
+state 16
+
+    (18) asignacion -> IDENTIFICADOR ASSIGN . valores
+    (23) valores -> . valor
+    (24) valores -> . valor COMA valores
+    (25) valor -> . ENTERO
+    (26) valor -> . FLOTANTE
+    (27) valor -> . CADENA
+    (28) valor -> . BOOLEANO
+    (29) valor -> . IDENTIFICADOR
+
+    ENTERO          shift and go to state 32
+    FLOTANTE        shift and go to state 33
+    CADENA          shift and go to state 34
+    BOOLEANO        shift and go to state 35
+    IDENTIFICADOR   shift and go to state 29
+
+    valores                        shift and go to state 30
+    valor                          shift and go to state 31
+
+state 17
+
+    (16) declaracion -> IDENTIFICADOR COLLON . ASSIGN valor
+
+    ASSIGN          shift and go to state 36
+
+
+state 18
+
+    (17) declaracion -> IDENTIFICADOR tdato .
+
+    $end            reduce using rule 17 (declaracion -> IDENTIFICADOR tdato .)
+    RKEY            reduce using rule 17 (declaracion -> IDENTIFICADOR tdato .)
+    RETURN          reduce using rule 17 (declaracion -> IDENTIFICADOR tdato .)
+
+
+state 19
+
+    (33) tdato -> INT .
+
+    $end            reduce using rule 33 (tdato -> INT .)
+    RKEY            reduce using rule 33 (tdato -> INT .)
+    RETURN          reduce using rule 33 (tdato -> INT .)
+    ASSIGN          reduce using rule 33 (tdato -> INT .)
+    COMA            reduce using rule 33 (tdato -> INT .)
+    RPAREN          reduce using rule 33 (tdato -> INT .)
+    LKEY            reduce using rule 33 (tdato -> INT .)
+
+
+state 20
+
+    (34) tdato -> STRING .
+
+    $end            reduce using rule 34 (tdato -> STRING .)
+    RKEY            reduce using rule 34 (tdato -> STRING .)
+    RETURN          reduce using rule 34 (tdato -> STRING .)
+    ASSIGN          reduce using rule 34 (tdato -> STRING .)
+    COMA            reduce using rule 34 (tdato -> STRING .)
+    RPAREN          reduce using rule 34 (tdato -> STRING .)
+    LKEY            reduce using rule 34 (tdato -> STRING .)
+
+
+state 21
+
+    (35) tdato -> FLOAT32 .
+
+    $end            reduce using rule 35 (tdato -> FLOAT32 .)
+    RKEY            reduce using rule 35 (tdato -> FLOAT32 .)
+    RETURN          reduce using rule 35 (tdato -> FLOAT32 .)
+    ASSIGN          reduce using rule 35 (tdato -> FLOAT32 .)
+    COMA            reduce using rule 35 (tdato -> FLOAT32 .)
+    RPAREN          reduce using rule 35 (tdato -> FLOAT32 .)
+    LKEY            reduce using rule 35 (tdato -> FLOAT32 .)
+
+
+state 22
+
+    (36) tdato -> FLOAT64 .
+
+    $end            reduce using rule 36 (tdato -> FLOAT64 .)
+    RKEY            reduce using rule 36 (tdato -> FLOAT64 .)
+    RETURN          reduce using rule 36 (tdato -> FLOAT64 .)
+    ASSIGN          reduce using rule 36 (tdato -> FLOAT64 .)
+    COMA            reduce using rule 36 (tdato -> FLOAT64 .)
+    RPAREN          reduce using rule 36 (tdato -> FLOAT64 .)
+    LKEY            reduce using rule 36 (tdato -> FLOAT64 .)
+
+
+state 23
+
+    (37) tdato -> BOOL .
+
+    $end            reduce using rule 37 (tdato -> BOOL .)
+    RKEY            reduce using rule 37 (tdato -> BOOL .)
+    RETURN          reduce using rule 37 (tdato -> BOOL .)
+    ASSIGN          reduce using rule 37 (tdato -> BOOL .)
+    COMA            reduce using rule 37 (tdato -> BOOL .)
+    RPAREN          reduce using rule 37 (tdato -> BOOL .)
+    LKEY            reduce using rule 37 (tdato -> BOOL .)
+
+
+state 24
+
+    (19) impresion -> IMPRIMIR LPAREN . valores RPAREN
+    (20) impresion -> IMPRIMIR LPAREN . RPAREN
+    (23) valores -> . valor
+    (24) valores -> . valor COMA valores
+    (25) valor -> . ENTERO
+    (26) valor -> . FLOTANTE
+    (27) valor -> . CADENA
+    (28) valor -> . BOOLEANO
+    (29) valor -> . IDENTIFICADOR
+
+    RPAREN          shift and go to state 38
+    ENTERO          shift and go to state 32
+    FLOTANTE        shift and go to state 33
+    CADENA          shift and go to state 34
+    BOOLEANO        shift and go to state 35
+    IDENTIFICADOR   shift and go to state 29
+
+    valores                        shift and go to state 37
+    valor                          shift and go to state 31
+
+state 25
+
+    (21) ingreso -> INGRESO LPAREN . valores RPAREN
+    (22) ingreso -> INGRESO LPAREN . RPAREN
+    (23) valores -> . valor
+    (24) valores -> . valor COMA valores
+    (25) valor -> . ENTERO
+    (26) valor -> . FLOTANTE
+    (27) valor -> . CADENA
+    (28) valor -> . BOOLEANO
+    (29) valor -> . IDENTIFICADOR
+
+    RPAREN          shift and go to state 40
+    ENTERO          shift and go to state 32
+    FLOTANTE        shift and go to state 33
+    CADENA          shift and go to state 34
+    BOOLEANO        shift and go to state 35
+    IDENTIFICADOR   shift and go to state 29
+
+    valores                        shift and go to state 39
+    valor                          shift and go to state 31
+
+state 26
+
+    (8) estructura -> TYPE IDENTIFICADOR . STRUCT LKEY sentencia RKEY
+    (9) estructura -> TYPE IDENTIFICADOR . STRUCT LKEY RKEY
+
+    STRUCT          shift and go to state 41
+
+
+state 27
+
+    (14) declaracion -> VAR IDENTIFICADOR . tdato ASSIGN valor
+    (15) declaracion -> VAR IDENTIFICADOR . tdato
+    (33) tdato -> . INT
+    (34) tdato -> . STRING
+    (35) tdato -> . FLOAT32
+    (36) tdato -> . FLOAT64
+    (37) tdato -> . BOOL
+
+    INT             shift and go to state 19
+    STRING          shift and go to state 20
+    FLOAT32         shift and go to state 21
+    FLOAT64         shift and go to state 22
+    BOOL            shift and go to state 23
+
+    tdato                          shift and go to state 42
+
+state 28
+
+    (10) funcion -> FUNC IDENTIFICADOR LPAREN . parametros RPAREN tdato LKEY sentencia RETURN IDENTIFICADOR RKEY
+    (11) funcion -> FUNC IDENTIFICADOR LPAREN . parametros RPAREN LKEY sentencia RKEY
+    (12) funcion -> FUNC IDENTIFICADOR LPAREN . RPAREN tdato LKEY sentencia RETURN IDENTIFICADOR RKEY
+    (13) funcion -> FUNC IDENTIFICADOR LPAREN . RPAREN LKEY sentencia RKEY
+    (30) parametros -> . parametro
+    (31) parametros -> . parametro COMA parametros
+    (32) parametro -> . IDENTIFICADOR tdato
+
+    RPAREN          shift and go to state 45
+    IDENTIFICADOR   shift and go to state 43
+
+    parametros                     shift and go to state 44
+    parametro                      shift and go to state 46
+
+state 29
+
+    (29) valor -> IDENTIFICADOR .
+
+    COMA            reduce using rule 29 (valor -> IDENTIFICADOR .)
+    $end            reduce using rule 29 (valor -> IDENTIFICADOR .)
+    RKEY            reduce using rule 29 (valor -> IDENTIFICADOR .)
+    RETURN          reduce using rule 29 (valor -> IDENTIFICADOR .)
+    RPAREN          reduce using rule 29 (valor -> IDENTIFICADOR .)
+
+
+state 30
+
+    (18) asignacion -> IDENTIFICADOR ASSIGN valores .
+
+    $end            reduce using rule 18 (asignacion -> IDENTIFICADOR ASSIGN valores .)
+    RKEY            reduce using rule 18 (asignacion -> IDENTIFICADOR ASSIGN valores .)
+    RETURN          reduce using rule 18 (asignacion -> IDENTIFICADOR ASSIGN valores .)
+
+
+state 31
+
+    (23) valores -> valor .
+    (24) valores -> valor . COMA valores
+
+    $end            reduce using rule 23 (valores -> valor .)
+    RKEY            reduce using rule 23 (valores -> valor .)
+    RETURN          reduce using rule 23 (valores -> valor .)
+    RPAREN          reduce using rule 23 (valores -> valor .)
+    COMA            shift and go to state 47
+
+
+state 32
+
+    (25) valor -> ENTERO .
+
+    COMA            reduce using rule 25 (valor -> ENTERO .)
+    $end            reduce using rule 25 (valor -> ENTERO .)
+    RKEY            reduce using rule 25 (valor -> ENTERO .)
+    RETURN          reduce using rule 25 (valor -> ENTERO .)
+    RPAREN          reduce using rule 25 (valor -> ENTERO .)
+
+
+state 33
+
+    (26) valor -> FLOTANTE .
+
+    COMA            reduce using rule 26 (valor -> FLOTANTE .)
+    $end            reduce using rule 26 (valor -> FLOTANTE .)
+    RKEY            reduce using rule 26 (valor -> FLOTANTE .)
+    RETURN          reduce using rule 26 (valor -> FLOTANTE .)
+    RPAREN          reduce using rule 26 (valor -> FLOTANTE .)
+
+
+state 34
+
+    (27) valor -> CADENA .
+
+    COMA            reduce using rule 27 (valor -> CADENA .)
+    $end            reduce using rule 27 (valor -> CADENA .)
+    RKEY            reduce using rule 27 (valor -> CADENA .)
+    RETURN          reduce using rule 27 (valor -> CADENA .)
+    RPAREN          reduce using rule 27 (valor -> CADENA .)
+
+
+state 35
+
+    (28) valor -> BOOLEANO .
+
+    COMA            reduce using rule 28 (valor -> BOOLEANO .)
+    $end            reduce using rule 28 (valor -> BOOLEANO .)
+    RKEY            reduce using rule 28 (valor -> BOOLEANO .)
+    RETURN          reduce using rule 28 (valor -> BOOLEANO .)
+    RPAREN          reduce using rule 28 (valor -> BOOLEANO .)
+
+
+state 36
+
+    (16) declaracion -> IDENTIFICADOR COLLON ASSIGN . valor
+    (25) valor -> . ENTERO
+    (26) valor -> . FLOTANTE
+    (27) valor -> . CADENA
+    (28) valor -> . BOOLEANO
+    (29) valor -> . IDENTIFICADOR
+
+    ENTERO          shift and go to state 32
+    FLOTANTE        shift and go to state 33
+    CADENA          shift and go to state 34
+    BOOLEANO        shift and go to state 35
+    IDENTIFICADOR   shift and go to state 29
+
+    valor                          shift and go to state 48
+
+state 37
+
+    (19) impresion -> IMPRIMIR LPAREN valores . RPAREN
+
+    RPAREN          shift and go to state 49
+
+
+state 38
+
+    (20) impresion -> IMPRIMIR LPAREN RPAREN .
+
+    $end            reduce using rule 20 (impresion -> IMPRIMIR LPAREN RPAREN .)
+    RKEY            reduce using rule 20 (impresion -> IMPRIMIR LPAREN RPAREN .)
+    RETURN          reduce using rule 20 (impresion -> IMPRIMIR LPAREN RPAREN .)
+
+
+state 39
+
+    (21) ingreso -> INGRESO LPAREN valores . RPAREN
+
+    RPAREN          shift and go to state 50
+
+
+state 40
+
+    (22) ingreso -> INGRESO LPAREN RPAREN .
+
+    $end            reduce using rule 22 (ingreso -> INGRESO LPAREN RPAREN .)
+    RKEY            reduce using rule 22 (ingreso -> INGRESO LPAREN RPAREN .)
+    RETURN          reduce using rule 22 (ingreso -> INGRESO LPAREN RPAREN .)
+
+
+state 41
+
+    (8) estructura -> TYPE IDENTIFICADOR STRUCT . LKEY sentencia RKEY
+    (9) estructura -> TYPE IDENTIFICADOR STRUCT . LKEY RKEY
+
+    LKEY            shift and go to state 51
+
+
+state 42
+
+    (14) declaracion -> VAR IDENTIFICADOR tdato . ASSIGN valor
+    (15) declaracion -> VAR IDENTIFICADOR tdato .
+
+    ASSIGN          shift and go to state 52
+    $end            reduce using rule 15 (declaracion -> VAR IDENTIFICADOR tdato .)
+    RKEY            reduce using rule 15 (declaracion -> VAR IDENTIFICADOR tdato .)
+    RETURN          reduce using rule 15 (declaracion -> VAR IDENTIFICADOR tdato .)
+
+
+state 43
+
+    (32) parametro -> IDENTIFICADOR . tdato
+    (33) tdato -> . INT
+    (34) tdato -> . STRING
+    (35) tdato -> . FLOAT32
+    (36) tdato -> . FLOAT64
+    (37) tdato -> . BOOL
+
+    INT             shift and go to state 19
+    STRING          shift and go to state 20
+    FLOAT32         shift and go to state 21
+    FLOAT64         shift and go to state 22
+    BOOL            shift and go to state 23
+
+    tdato                          shift and go to state 53
+
+state 44
+
+    (10) funcion -> FUNC IDENTIFICADOR LPAREN parametros . RPAREN tdato LKEY sentencia RETURN IDENTIFICADOR RKEY
+    (11) funcion -> FUNC IDENTIFICADOR LPAREN parametros . RPAREN LKEY sentencia RKEY
+
+    RPAREN          shift and go to state 54
+
+
+state 45
+
+    (12) funcion -> FUNC IDENTIFICADOR LPAREN RPAREN . tdato LKEY sentencia RETURN IDENTIFICADOR RKEY
+    (13) funcion -> FUNC IDENTIFICADOR LPAREN RPAREN . LKEY sentencia RKEY
+    (33) tdato -> . INT
+    (34) tdato -> . STRING
+    (35) tdato -> . FLOAT32
+    (36) tdato -> . FLOAT64
+    (37) tdato -> . BOOL
+
+    LKEY            shift and go to state 56
+    INT             shift and go to state 19
+    STRING          shift and go to state 20
+    FLOAT32         shift and go to state 21
+    FLOAT64         shift and go to state 22
+    BOOL            shift and go to state 23
+
+    tdato                          shift and go to state 55
+
+state 46
+
+    (30) parametros -> parametro .
+    (31) parametros -> parametro . COMA parametros
+
+    RPAREN          reduce using rule 30 (parametros -> parametro .)
+    COMA            shift and go to state 57
+
+
+state 47
+
+    (24) valores -> valor COMA . valores
+    (23) valores -> . valor
+    (24) valores -> . valor COMA valores
+    (25) valor -> . ENTERO
+    (26) valor -> . FLOTANTE
+    (27) valor -> . CADENA
+    (28) valor -> . BOOLEANO
+    (29) valor -> . IDENTIFICADOR
+
+    ENTERO          shift and go to state 32
+    FLOTANTE        shift and go to state 33
+    CADENA          shift and go to state 34
+    BOOLEANO        shift and go to state 35
+    IDENTIFICADOR   shift and go to state 29
+
+    valor                          shift and go to state 31
+    valores                        shift and go to state 58
+
+state 48
+
+    (16) declaracion -> IDENTIFICADOR COLLON ASSIGN valor .
+
+    $end            reduce using rule 16 (declaracion -> IDENTIFICADOR COLLON ASSIGN valor .)
+    RKEY            reduce using rule 16 (declaracion -> IDENTIFICADOR COLLON ASSIGN valor .)
+    RETURN          reduce using rule 16 (declaracion -> IDENTIFICADOR COLLON ASSIGN valor .)
+
+
+state 49
+
+    (19) impresion -> IMPRIMIR LPAREN valores RPAREN .
+
+    $end            reduce using rule 19 (impresion -> IMPRIMIR LPAREN valores RPAREN .)
+    RKEY            reduce using rule 19 (impresion -> IMPRIMIR LPAREN valores RPAREN .)
+    RETURN          reduce using rule 19 (impresion -> IMPRIMIR LPAREN valores RPAREN .)
+
+
+state 50
+
+    (21) ingreso -> INGRESO LPAREN valores RPAREN .
+
+    $end            reduce using rule 21 (ingreso -> INGRESO LPAREN valores RPAREN .)
+    RKEY            reduce using rule 21 (ingreso -> INGRESO LPAREN valores RPAREN .)
+    RETURN          reduce using rule 21 (ingreso -> INGRESO LPAREN valores RPAREN .)
+
+
+state 51
+
+    (8) estructura -> TYPE IDENTIFICADOR STRUCT LKEY . sentencia RKEY
+    (9) estructura -> TYPE IDENTIFICADOR STRUCT LKEY . RKEY
+    (1) sentencia -> . bloques
+    (2) sentencia -> . funcion
+    (3) bloques -> . impresion
+    (4) bloques -> . ingreso
+    (5) bloques -> . asignacion
+    (6) bloques -> . estructura
+    (7) bloques -> . declaracion
+    (10) funcion -> . FUNC IDENTIFICADOR LPAREN parametros RPAREN tdato LKEY sentencia RETURN IDENTIFICADOR RKEY
+    (11) funcion -> . FUNC IDENTIFICADOR LPAREN parametros RPAREN LKEY sentencia RKEY
+    (12) funcion -> . FUNC IDENTIFICADOR LPAREN RPAREN tdato LKEY sentencia RETURN IDENTIFICADOR RKEY
+    (13) funcion -> . FUNC IDENTIFICADOR LPAREN RPAREN LKEY sentencia RKEY
+    (19) impresion -> . IMPRIMIR LPAREN valores RPAREN
+    (20) impresion -> . IMPRIMIR LPAREN RPAREN
+    (21) ingreso -> . INGRESO LPAREN valores RPAREN
+    (22) ingreso -> . INGRESO LPAREN RPAREN
+    (18) asignacion -> . IDENTIFICADOR ASSIGN valores
+    (8) estructura -> . TYPE IDENTIFICADOR STRUCT LKEY sentencia RKEY
+    (9) estructura -> . TYPE IDENTIFICADOR STRUCT LKEY RKEY
+    (14) declaracion -> . VAR IDENTIFICADOR tdato ASSIGN valor
+    (15) declaracion -> . VAR IDENTIFICADOR tdato
+    (16) declaracion -> . IDENTIFICADOR COLLON ASSIGN valor
+    (17) declaracion -> . IDENTIFICADOR tdato
+
+    RKEY            shift and go to state 60
+    FUNC            shift and go to state 9
+    IMPRIMIR        shift and go to state 11
+    INGRESO         shift and go to state 12
+    IDENTIFICADOR   shift and go to state 10
+    TYPE            shift and go to state 13
+    VAR             shift and go to state 14
+
+    sentencia                      shift and go to state 59
+    bloques                        shift and go to state 2
+    funcion                        shift and go to state 3
+    impresion                      shift and go to state 4
+    ingreso                        shift and go to state 5
+    asignacion                     shift and go to state 6
+    estructura                     shift and go to state 7
+    declaracion                    shift and go to state 8
+
+state 52
+
+    (14) declaracion -> VAR IDENTIFICADOR tdato ASSIGN . valor
+    (25) valor -> . ENTERO
+    (26) valor -> . FLOTANTE
+    (27) valor -> . CADENA
+    (28) valor -> . BOOLEANO
+    (29) valor -> . IDENTIFICADOR
+
+    ENTERO          shift and go to state 32
+    FLOTANTE        shift and go to state 33
+    CADENA          shift and go to state 34
+    BOOLEANO        shift and go to state 35
+    IDENTIFICADOR   shift and go to state 29
+
+    valor                          shift and go to state 61
+
+state 53
+
+    (32) parametro -> IDENTIFICADOR tdato .
+
+    COMA            reduce using rule 32 (parametro -> IDENTIFICADOR tdato .)
+    RPAREN          reduce using rule 32 (parametro -> IDENTIFICADOR tdato .)
+
+
+state 54
+
+    (10) funcion -> FUNC IDENTIFICADOR LPAREN parametros RPAREN . tdato LKEY sentencia RETURN IDENTIFICADOR RKEY
+    (11) funcion -> FUNC IDENTIFICADOR LPAREN parametros RPAREN . LKEY sentencia RKEY
+    (33) tdato -> . INT
+    (34) tdato -> . STRING
+    (35) tdato -> . FLOAT32
+    (36) tdato -> . FLOAT64
+    (37) tdato -> . BOOL
+
+    LKEY            shift and go to state 63
+    INT             shift and go to state 19
+    STRING          shift and go to state 20
+    FLOAT32         shift and go to state 21
+    FLOAT64         shift and go to state 22
+    BOOL            shift and go to state 23
+
+    tdato                          shift and go to state 62
+
+state 55
+
+    (12) funcion -> FUNC IDENTIFICADOR LPAREN RPAREN tdato . LKEY sentencia RETURN IDENTIFICADOR RKEY
+
+    LKEY            shift and go to state 64
+
+
+state 56
+
+    (13) funcion -> FUNC IDENTIFICADOR LPAREN RPAREN LKEY . sentencia RKEY
+    (1) sentencia -> . bloques
+    (2) sentencia -> . funcion
+    (3) bloques -> . impresion
+    (4) bloques -> . ingreso
+    (5) bloques -> . asignacion
+    (6) bloques -> . estructura
+    (7) bloques -> . declaracion
+    (10) funcion -> . FUNC IDENTIFICADOR LPAREN parametros RPAREN tdato LKEY sentencia RETURN IDENTIFICADOR RKEY
+    (11) funcion -> . FUNC IDENTIFICADOR LPAREN parametros RPAREN LKEY sentencia RKEY
+    (12) funcion -> . FUNC IDENTIFICADOR LPAREN RPAREN tdato LKEY sentencia RETURN IDENTIFICADOR RKEY
+    (13) funcion -> . FUNC IDENTIFICADOR LPAREN RPAREN LKEY sentencia RKEY
+    (19) impresion -> . IMPRIMIR LPAREN valores RPAREN
+    (20) impresion -> . IMPRIMIR LPAREN RPAREN
+    (21) ingreso -> . INGRESO LPAREN valores RPAREN
+    (22) ingreso -> . INGRESO LPAREN RPAREN
+    (18) asignacion -> . IDENTIFICADOR ASSIGN valores
+    (8) estructura -> . TYPE IDENTIFICADOR STRUCT LKEY sentencia RKEY
+    (9) estructura -> . TYPE IDENTIFICADOR STRUCT LKEY RKEY
+    (14) declaracion -> . VAR IDENTIFICADOR tdato ASSIGN valor
+    (15) declaracion -> . VAR IDENTIFICADOR tdato
+    (16) declaracion -> . IDENTIFICADOR COLLON ASSIGN valor
+    (17) declaracion -> . IDENTIFICADOR tdato
+
+    FUNC            shift and go to state 9
+    IMPRIMIR        shift and go to state 11
+    INGRESO         shift and go to state 12
+    IDENTIFICADOR   shift and go to state 10
+    TYPE            shift and go to state 13
+    VAR             shift and go to state 14
+
+    sentencia                      shift and go to state 65
+    bloques                        shift and go to state 2
+    funcion                        shift and go to state 3
+    impresion                      shift and go to state 4
+    ingreso                        shift and go to state 5
+    asignacion                     shift and go to state 6
+    estructura                     shift and go to state 7
+    declaracion                    shift and go to state 8
+
+state 57
+
+    (31) parametros -> parametro COMA . parametros
+    (30) parametros -> . parametro
+    (31) parametros -> . parametro COMA parametros
+    (32) parametro -> . IDENTIFICADOR tdato
+
+    IDENTIFICADOR   shift and go to state 43
+
+    parametro                      shift and go to state 46
+    parametros                     shift and go to state 66
+
+state 58
+
+    (24) valores -> valor COMA valores .
+
+    $end            reduce using rule 24 (valores -> valor COMA valores .)
+    RKEY            reduce using rule 24 (valores -> valor COMA valores .)
+    RETURN          reduce using rule 24 (valores -> valor COMA valores .)
+    RPAREN          reduce using rule 24 (valores -> valor COMA valores .)
+
+
+state 59
+
+    (8) estructura -> TYPE IDENTIFICADOR STRUCT LKEY sentencia . RKEY
+
+    RKEY            shift and go to state 67
+
+
+state 60
+
+    (9) estructura -> TYPE IDENTIFICADOR STRUCT LKEY RKEY .
+
+    $end            reduce using rule 9 (estructura -> TYPE IDENTIFICADOR STRUCT LKEY RKEY .)
+    RKEY            reduce using rule 9 (estructura -> TYPE IDENTIFICADOR STRUCT LKEY RKEY .)
+    RETURN          reduce using rule 9 (estructura -> TYPE IDENTIFICADOR STRUCT LKEY RKEY .)
+
+
+state 61
+
+    (14) declaracion -> VAR IDENTIFICADOR tdato ASSIGN valor .
+
+    $end            reduce using rule 14 (declaracion -> VAR IDENTIFICADOR tdato ASSIGN valor .)
+    RKEY            reduce using rule 14 (declaracion -> VAR IDENTIFICADOR tdato ASSIGN valor .)
+    RETURN          reduce using rule 14 (declaracion -> VAR IDENTIFICADOR tdato ASSIGN valor .)
+
+
+state 62
+
+    (10) funcion -> FUNC IDENTIFICADOR LPAREN parametros RPAREN tdato . LKEY sentencia RETURN IDENTIFICADOR RKEY
+
+    LKEY            shift and go to state 68
+
+
+state 63
+
+    (11) funcion -> FUNC IDENTIFICADOR LPAREN parametros RPAREN LKEY . sentencia RKEY
+    (1) sentencia -> . bloques
+    (2) sentencia -> . funcion
+    (3) bloques -> . impresion
+    (4) bloques -> . ingreso
+    (5) bloques -> . asignacion
+    (6) bloques -> . estructura
+    (7) bloques -> . declaracion
+    (10) funcion -> . FUNC IDENTIFICADOR LPAREN parametros RPAREN tdato LKEY sentencia RETURN IDENTIFICADOR RKEY
+    (11) funcion -> . FUNC IDENTIFICADOR LPAREN parametros RPAREN LKEY sentencia RKEY
+    (12) funcion -> . FUNC IDENTIFICADOR LPAREN RPAREN tdato LKEY sentencia RETURN IDENTIFICADOR RKEY
+    (13) funcion -> . FUNC IDENTIFICADOR LPAREN RPAREN LKEY sentencia RKEY
+    (19) impresion -> . IMPRIMIR LPAREN valores RPAREN
+    (20) impresion -> . IMPRIMIR LPAREN RPAREN
+    (21) ingreso -> . INGRESO LPAREN valores RPAREN
+    (22) ingreso -> . INGRESO LPAREN RPAREN
+    (18) asignacion -> . IDENTIFICADOR ASSIGN valores
+    (8) estructura -> . TYPE IDENTIFICADOR STRUCT LKEY sentencia RKEY
+    (9) estructura -> . TYPE IDENTIFICADOR STRUCT LKEY RKEY
+    (14) declaracion -> . VAR IDENTIFICADOR tdato ASSIGN valor
+    (15) declaracion -> . VAR IDENTIFICADOR tdato
+    (16) declaracion -> . IDENTIFICADOR COLLON ASSIGN valor
+    (17) declaracion -> . IDENTIFICADOR tdato
+
+    FUNC            shift and go to state 9
+    IMPRIMIR        shift and go to state 11
+    INGRESO         shift and go to state 12
+    IDENTIFICADOR   shift and go to state 10
+    TYPE            shift and go to state 13
+    VAR             shift and go to state 14
+
+    sentencia                      shift and go to state 69
+    bloques                        shift and go to state 2
+    funcion                        shift and go to state 3
+    impresion                      shift and go to state 4
+    ingreso                        shift and go to state 5
+    asignacion                     shift and go to state 6
+    estructura                     shift and go to state 7
+    declaracion                    shift and go to state 8
+
+state 64
+
+    (12) funcion -> FUNC IDENTIFICADOR LPAREN RPAREN tdato LKEY . sentencia RETURN IDENTIFICADOR RKEY
+    (1) sentencia -> . bloques
+    (2) sentencia -> . funcion
+    (3) bloques -> . impresion
+    (4) bloques -> . ingreso
+    (5) bloques -> . asignacion
+    (6) bloques -> . estructura
+    (7) bloques -> . declaracion
+    (10) funcion -> . FUNC IDENTIFICADOR LPAREN parametros RPAREN tdato LKEY sentencia RETURN IDENTIFICADOR RKEY
+    (11) funcion -> . FUNC IDENTIFICADOR LPAREN parametros RPAREN LKEY sentencia RKEY
+    (12) funcion -> . FUNC IDENTIFICADOR LPAREN RPAREN tdato LKEY sentencia RETURN IDENTIFICADOR RKEY
+    (13) funcion -> . FUNC IDENTIFICADOR LPAREN RPAREN LKEY sentencia RKEY
+    (19) impresion -> . IMPRIMIR LPAREN valores RPAREN
+    (20) impresion -> . IMPRIMIR LPAREN RPAREN
+    (21) ingreso -> . INGRESO LPAREN valores RPAREN
+    (22) ingreso -> . INGRESO LPAREN RPAREN
+    (18) asignacion -> . IDENTIFICADOR ASSIGN valores
+    (8) estructura -> . TYPE IDENTIFICADOR STRUCT LKEY sentencia RKEY
+    (9) estructura -> . TYPE IDENTIFICADOR STRUCT LKEY RKEY
+    (14) declaracion -> . VAR IDENTIFICADOR tdato ASSIGN valor
+    (15) declaracion -> . VAR IDENTIFICADOR tdato
+    (16) declaracion -> . IDENTIFICADOR COLLON ASSIGN valor
+    (17) declaracion -> . IDENTIFICADOR tdato
+
+    FUNC            shift and go to state 9
+    IMPRIMIR        shift and go to state 11
+    INGRESO         shift and go to state 12
+    IDENTIFICADOR   shift and go to state 10
+    TYPE            shift and go to state 13
+    VAR             shift and go to state 14
+
+    sentencia                      shift and go to state 70
+    bloques                        shift and go to state 2
+    funcion                        shift and go to state 3
+    impresion                      shift and go to state 4
+    ingreso                        shift and go to state 5
+    asignacion                     shift and go to state 6
+    estructura                     shift and go to state 7
+    declaracion                    shift and go to state 8
+
+state 65
+
+    (13) funcion -> FUNC IDENTIFICADOR LPAREN RPAREN LKEY sentencia . RKEY
+
+    RKEY            shift and go to state 71
+
+
+state 66
+
+    (31) parametros -> parametro COMA parametros .
+
+    RPAREN          reduce using rule 31 (parametros -> parametro COMA parametros .)
+
+
+state 67
+
+    (8) estructura -> TYPE IDENTIFICADOR STRUCT LKEY sentencia RKEY .
+
+    $end            reduce using rule 8 (estructura -> TYPE IDENTIFICADOR STRUCT LKEY sentencia RKEY .)
+    RKEY            reduce using rule 8 (estructura -> TYPE IDENTIFICADOR STRUCT LKEY sentencia RKEY .)
+    RETURN          reduce using rule 8 (estructura -> TYPE IDENTIFICADOR STRUCT LKEY sentencia RKEY .)
+
+
+state 68
+
+    (10) funcion -> FUNC IDENTIFICADOR LPAREN parametros RPAREN tdato LKEY . sentencia RETURN IDENTIFICADOR RKEY
+    (1) sentencia -> . bloques
+    (2) sentencia -> . funcion
+    (3) bloques -> . impresion
+    (4) bloques -> . ingreso
+    (5) bloques -> . asignacion
+    (6) bloques -> . estructura
+    (7) bloques -> . declaracion
+    (10) funcion -> . FUNC IDENTIFICADOR LPAREN parametros RPAREN tdato LKEY sentencia RETURN IDENTIFICADOR RKEY
+    (11) funcion -> . FUNC IDENTIFICADOR LPAREN parametros RPAREN LKEY sentencia RKEY
+    (12) funcion -> . FUNC IDENTIFICADOR LPAREN RPAREN tdato LKEY sentencia RETURN IDENTIFICADOR RKEY
+    (13) funcion -> . FUNC IDENTIFICADOR LPAREN RPAREN LKEY sentencia RKEY
+    (19) impresion -> . IMPRIMIR LPAREN valores RPAREN
+    (20) impresion -> . IMPRIMIR LPAREN RPAREN
+    (21) ingreso -> . INGRESO LPAREN valores RPAREN
+    (22) ingreso -> . INGRESO LPAREN RPAREN
+    (18) asignacion -> . IDENTIFICADOR ASSIGN valores
+    (8) estructura -> . TYPE IDENTIFICADOR STRUCT LKEY sentencia RKEY
+    (9) estructura -> . TYPE IDENTIFICADOR STRUCT LKEY RKEY
+    (14) declaracion -> . VAR IDENTIFICADOR tdato ASSIGN valor
+    (15) declaracion -> . VAR IDENTIFICADOR tdato
+    (16) declaracion -> . IDENTIFICADOR COLLON ASSIGN valor
+    (17) declaracion -> . IDENTIFICADOR tdato
+
+    FUNC            shift and go to state 9
+    IMPRIMIR        shift and go to state 11
+    INGRESO         shift and go to state 12
+    IDENTIFICADOR   shift and go to state 10
+    TYPE            shift and go to state 13
+    VAR             shift and go to state 14
+
+    sentencia                      shift and go to state 72
+    bloques                        shift and go to state 2
+    funcion                        shift and go to state 3
+    impresion                      shift and go to state 4
+    ingreso                        shift and go to state 5
+    asignacion                     shift and go to state 6
+    estructura                     shift and go to state 7
+    declaracion                    shift and go to state 8
+
+state 69
+
+    (11) funcion -> FUNC IDENTIFICADOR LPAREN parametros RPAREN LKEY sentencia . RKEY
+
+    RKEY            shift and go to state 73
+
+
+state 70
+
+    (12) funcion -> FUNC IDENTIFICADOR LPAREN RPAREN tdato LKEY sentencia . RETURN IDENTIFICADOR RKEY
+
+    RETURN          shift and go to state 74
+
+
+state 71
+
+    (13) funcion -> FUNC IDENTIFICADOR LPAREN RPAREN LKEY sentencia RKEY .
+
+    $end            reduce using rule 13 (funcion -> FUNC IDENTIFICADOR LPAREN RPAREN LKEY sentencia RKEY .)
+    RKEY            reduce using rule 13 (funcion -> FUNC IDENTIFICADOR LPAREN RPAREN LKEY sentencia RKEY .)
+    RETURN          reduce using rule 13 (funcion -> FUNC IDENTIFICADOR LPAREN RPAREN LKEY sentencia RKEY .)
+
+
+state 72
+
+    (10) funcion -> FUNC IDENTIFICADOR LPAREN parametros RPAREN tdato LKEY sentencia . RETURN IDENTIFICADOR RKEY
+
+    RETURN          shift and go to state 75
+
+
+state 73
+
+    (11) funcion -> FUNC IDENTIFICADOR LPAREN parametros RPAREN LKEY sentencia RKEY .
+
+    $end            reduce using rule 11 (funcion -> FUNC IDENTIFICADOR LPAREN parametros RPAREN LKEY sentencia RKEY .)
+    RKEY            reduce using rule 11 (funcion -> FUNC IDENTIFICADOR LPAREN parametros RPAREN LKEY sentencia RKEY .)
+    RETURN          reduce using rule 11 (funcion -> FUNC IDENTIFICADOR LPAREN parametros RPAREN LKEY sentencia RKEY .)
+
+
+state 74
+
+    (12) funcion -> FUNC IDENTIFICADOR LPAREN RPAREN tdato LKEY sentencia RETURN . IDENTIFICADOR RKEY
+
+    IDENTIFICADOR   shift and go to state 76
+
+
+state 75
+
+    (10) funcion -> FUNC IDENTIFICADOR LPAREN parametros RPAREN tdato LKEY sentencia RETURN . IDENTIFICADOR RKEY
+
+    IDENTIFICADOR   shift and go to state 77
+
+
+state 76
+
+    (12) funcion -> FUNC IDENTIFICADOR LPAREN RPAREN tdato LKEY sentencia RETURN IDENTIFICADOR . RKEY
+
+    RKEY            shift and go to state 78
+
+
+state 77
+
+    (10) funcion -> FUNC IDENTIFICADOR LPAREN parametros RPAREN tdato LKEY sentencia RETURN IDENTIFICADOR . RKEY
+
+    RKEY            shift and go to state 79
+
+
+state 78
+
+    (12) funcion -> FUNC IDENTIFICADOR LPAREN RPAREN tdato LKEY sentencia RETURN IDENTIFICADOR RKEY .
+
+    $end            reduce using rule 12 (funcion -> FUNC IDENTIFICADOR LPAREN RPAREN tdato LKEY sentencia RETURN IDENTIFICADOR RKEY .)
+    RKEY            reduce using rule 12 (funcion -> FUNC IDENTIFICADOR LPAREN RPAREN tdato LKEY sentencia RETURN IDENTIFICADOR RKEY .)
+    RETURN          reduce using rule 12 (funcion -> FUNC IDENTIFICADOR LPAREN RPAREN tdato LKEY sentencia RETURN IDENTIFICADOR RKEY .)
+
+
+state 79
+
+    (10) funcion -> FUNC IDENTIFICADOR LPAREN parametros RPAREN tdato LKEY sentencia RETURN IDENTIFICADOR RKEY .
+
+    $end            reduce using rule 10 (funcion -> FUNC IDENTIFICADOR LPAREN parametros RPAREN tdato LKEY sentencia RETURN IDENTIFICADOR RKEY .)
+    RKEY            reduce using rule 10 (funcion -> FUNC IDENTIFICADOR LPAREN parametros RPAREN tdato LKEY sentencia RETURN IDENTIFICADOR RKEY .)
+    RETURN          reduce using rule 10 (funcion -> FUNC IDENTIFICADOR LPAREN parametros RPAREN tdato LKEY sentencia RETURN IDENTIFICADOR RKEY .)
+

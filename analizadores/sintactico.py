@@ -16,34 +16,34 @@ def p_bloques(p):
                 '''
 
 def p_estructura(p):
-    'estructura : TYPE IDENTIFICADOR STRUCT LKEY asignacion RKEY'
+    'estructura : TYPE IDENTIFICADOR STRUCT LKEY sentencia RKEY'
 
 def p_estructura_vacia(p):
     'estructura : TYPE IDENTIFICADOR STRUCT LKEY RKEY'
 
-def p_def_funcion_con_parametros_con_return(p):
+def p_funcion_con_parametros_con_return(p):
     'funcion : FUNC IDENTIFICADOR LPAREN parametros RPAREN tdato LKEY sentencia RETURN IDENTIFICADOR RKEY' 
 
-def p_def_funcion_con_parametros_sin_return(p):
+def p_funcion_con_parametros_sin_return(p):
     'funcion : FUNC IDENTIFICADOR LPAREN parametros RPAREN LKEY sentencia RKEY'
 
-def p_def_funcion_sin_parametros_con_return(p):
+def p_funcion_sin_parametros_con_return(p):
     'funcion : FUNC IDENTIFICADOR LPAREN RPAREN tdato LKEY sentencia RETURN IDENTIFICADOR RKEY'
 
-def p_def_funcion_sin_parametros_sin_return(p):
+def p_funcion_sin_parametros_sin_return(p):
     'funcion : FUNC IDENTIFICADOR LPAREN RPAREN LKEY sentencia RKEY'
 
-def p_declaracionVariable(p):
+def p_declaracion_variable(p):
     'declaracion : VAR IDENTIFICADOR tdato ASSIGN valor'
 
-def p_declaracionVariable_vacia(p):
+def p_declaracion_variable_vacia(p):
     'declaracion : VAR IDENTIFICADOR tdato'
                 
-def p_declaracionVariable_simple(p):
-    '''declaracion : IDENTIFICADOR COLLON ASSIGN ENTERO tdato
+def p_declaracion_variable_simple(p):
+    '''declaracion : IDENTIFICADOR COLLON ASSIGN valor
                 '''
                 
-def p_declaracionVariable_estructura(p):
+def p_declaracion_variable_estructura(p):
     'declaracion : IDENTIFICADOR tdato'
 
 def p_asignacion(p):

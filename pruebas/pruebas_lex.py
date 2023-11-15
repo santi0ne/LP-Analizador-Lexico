@@ -1,9 +1,9 @@
 
-##### ALGORITMOS DE PRUEBA #####
+##### ALGORITMOS DE PRUEBA LEXICO #####
 
 ## Johnny Santiago Rodriguez Salinas
 
-def vars_declaration():
+def test_vars_declaration():
     return '''
             var cadena string      
             var numero int
@@ -12,21 +12,21 @@ def vars_declaration():
             var bool1 bool
             '''
 
-def for_body():
+def test_for_body():
     return '''
            for i := 0; i < 5; i++ {
            
            }
            '''
 
-def if_sin_else():
+def test_if_sin_else():
     return '''
            if (-8 == .9){
         
            }
            '''
 
-def if_con_else():
+def test_if_con_else():
     return '''
            if(-.7>.23){
                 return true
@@ -35,14 +35,14 @@ def if_con_else():
            }
            '''
 
-def func_declaration():
+def test_func_declaration():
     return '''
            func main(a int,b int){
                 return a + b 
            }
            '''
 
-def switch_declaration():
+def test_switch_declaration():
     return '''
            switch valor {
                 case 1:
