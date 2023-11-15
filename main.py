@@ -1,9 +1,15 @@
 import ply.yacc as yacc
 from analizadores.lexico import *
 from analizadores.sintactico import *
+from pruebas.pruebas_sin import *
 
 # Build the parser
 parser = yacc.yacc()
+
+'''code= test_declaracion_variable()
+result = parser.parse(code)
+if result != None:
+    print(result)'''
 
 while True:
    try:
@@ -15,3 +21,4 @@ while True:
    result = parser.parse(s)
    if result != None:
        print(result)
+
