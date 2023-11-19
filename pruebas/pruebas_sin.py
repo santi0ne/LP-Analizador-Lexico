@@ -38,3 +38,9 @@ def test_estructura():
 
 def test_estructura_vacia():
     return 'type coche struct { } '
+
+def test_if():
+    return 'if variable>9.2 || go>=8 { fmt.Println(variable) ; var nombre string = henry }'
+
+def test_if_condicion_unica():
+    return 'if go>=8 { fmt.Println(variable) }'

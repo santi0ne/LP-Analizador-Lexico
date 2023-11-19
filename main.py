@@ -6,10 +6,12 @@ from pruebas.pruebas_sin import *
 # Build the parser
 parser = yacc.yacc()
 
-'''code= test_declaracion_variable()
+'''
+code= test_if()
 result = parser.parse(code)
 if result != None:
-    print(result)'''
+    print(result)
+'''
 
 while True:
    try:

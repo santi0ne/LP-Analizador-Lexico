@@ -21,7 +21,7 @@ reserved = {
    'func':'FUNC',        # Johnny Rodriguez
    'return':'RETURN',    # Johnny Rodriguez
    'switch':'SWITCH',    # Johnny Rodriguez
-   'case':'CASE',         # Johnny Rodriguez
+   'case':'CASE',        # Johnny Rodriguez
    'struct':'STRUCT',     # Nicolas Coronel
    'type':'TYPE'         # Nicolas Coronel
 }
@@ -40,6 +40,10 @@ tokens = (
     'RKEY',              # Johnny Rodriguez
     'COLLON',            # Johnny Rodriguez
     'INGRESO',           # Johnny Rodriguez
+    'AND',               # Johnny Rodriguez  
+    'OR',                # Johnny Rodriguez
+    'NOT',               # Johnny Rodriguez
+    'SALTO',             # Johnny Rodriguez
     'SUMA',              # Jeremy Martinez
     'RESTA',             # Jeremy Martinez
     'MULTIPLICACION',    # Jeremy Martinez
@@ -75,9 +79,13 @@ t_MAYORIGUALQUE = r'>='
 t_MENORIGUALQUE = r'<='
 t_MAYORQUE = r'>'
 t_MENORQUE = r'<'
+t_AND = r'&&'
+t_OR = r'\|\|'
+t_NOT = r'!'
 t_MODULO = r'%'
 t_DIFERENTEQUE = r'!='
 t_COMA = r','
+t_SALTO = r';'  #\n
 
 def t_IMPRIMIR(t):
     r'fmt\.Print(ln)?'
