@@ -1,4 +1,5 @@
 #### ALGORITMOS DE PRUEBA SINTACTICO ####
+import random
 
 def test_impresion():
     return 'fmt.Println(carro)'
@@ -44,3 +45,24 @@ def test_if():
 
 def test_if_condicion_unica():
     return 'if go>=8 { fmt.Println(variable) }'
+
+def test_suma():
+    opciones = ['aha + ehe', '4526 + 8940', 'hej + 89']
+    resultado = random.choice(opciones)
+    return resultado
+def test_resta():
+    opciones = ['alw - gg', '46 - 2', 'je - 89']
+    resultado = random.choice(opciones)
+    return resultado    
+def test_multiplicacion():
+    opciones = ['wjrh * vcn', '20 * 11', 'pas * 89']
+    resultado = random.choice(opciones)
+    return resultado
+def test_division():
+    opciones = ['apaq / jehr','987 / 55' ,'pqie / 89']
+    resultado = random.choice(opciones)
+    return resultado
+def test_incremento():
+    return 'hegrg ++'
+def test_decrementi():
+    return 'qoeu --'

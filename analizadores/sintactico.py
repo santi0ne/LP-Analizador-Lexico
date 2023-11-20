@@ -20,6 +20,7 @@ def p_bloque(p):
                 | declaracion
                 | condiciones
                 | clausula_if
+                | operaciones
                 '''
 
 def p_estructura(p):
@@ -132,3 +133,42 @@ def p_numero(p):
     '''NUMERO : ENTERO
               | FLOTANTE
               '''
+# Jeremy Martinez
+def p_operaciones(p):
+    '''operaciones : suma
+                    | resta
+                    | producto
+                    | division
+                    | incremento
+                    | decremento
+                    '''
+
+def p_suma(p):
+    '''suma : NUMERO SUMA NUMERO
+                | IDENTIFICADOR SUMA IDENTIFICADOR
+                | IDENTIFICADOR SUMA NUMERO
+            '''
+
+def p_resta(p):
+    '''resta : NUMERO RESTA NUMERO
+                | IDENTIFICADOR RESTA IDENTIFICADOR
+                | IDENTIFICADOR RESTA NUMERO
+            '''
+def p_producto(p):
+    '''producto : NUMERO MULTIPLICACION NUMERO
+                | IDENTIFICADOR MULTIPLICACION IDENTIFICADOR
+                | IDENTIFICADOR MULTIPLICACION NUMERO
+            '''
+
+def p_division(p):
+    '''division : NUMERO DIVISION NUMERO
+                | IDENTIFICADOR DIVISION IDENTIFICADOR
+                | IDENTIFICADOR DIVISION NUMERO
+                '''
+def p_incremento(p):
+    '''incremento : IDENTIFICADOR INCREMENTO
+                '''
+
+def p_decremento(p):
+    '''decremento : IDENTIFICADOR DECREMENTO
+                '''

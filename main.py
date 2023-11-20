@@ -6,13 +6,15 @@ from pruebas.pruebas_sin import *
 # Build the parser
 parser = yacc.yacc()
 
-'''
-code= test_if()
+#Aqui probamos los algoritmos del sintactico
+code= test_division()
 result = parser.parse(code)
 if result != None:
     print(result)
-'''
 
+
+#Aqui probamos el yac por la terminal
+'''
 while True:
    try:
        s = input('>>> ')
@@ -23,4 +25,4 @@ while True:
    result = parser.parse(s)
    if result != None:
        print(result)
-
+'''
