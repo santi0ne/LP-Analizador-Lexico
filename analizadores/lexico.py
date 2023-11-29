@@ -20,7 +20,8 @@ reserved = {
    'return':'RETURN',    # Johnny Rodriguez
    'switch':'SWITCH',    # Johnny Rodriguez
    'case':'CASE',        # Johnny Rodriguez
-   'struct':'STRUCT',     # Nicolas Coronel
+   'make':'MAKE',        # Johnny Rodriguez
+   'struct':'STRUCT',    # Nicolas Coronel
    'type':'TYPE'         # Nicolas Coronel
 }
 
@@ -32,6 +33,7 @@ tokens = (
     'CADENA',            # Johnny Rodriguez
     'BOOLEANO',          # Johnny Rodriguez
     'ASSIGN',            # Johnny Rodriguez
+    'ASSIGNV',           # Johnny Rodriguez
     'LPAREN',            # Johnny Rodriguez
     'RPAREN',            # Johnny Rodriguez
     'LKEY',              # Johnny Rodriguez
@@ -42,6 +44,7 @@ tokens = (
     'OR',                # Johnny Rodriguez
     'NOT',               # Johnny Rodriguez
     'SALTO',             # Johnny Rodriguez
+    'BRACKET',          # Johnny Rodriguez
     'SUMA',              # Jeremy Martinez
     'RESTA',             # Jeremy Martinez
     'MULTIPLICACION',    # Jeremy Martinez
@@ -62,6 +65,7 @@ tokens = (
 # Expresiones Regulares simples para símbolos
 t_IGUALQUE = r'=='
 t_ASSIGN = r'='
+t_ASSIGNV = r':='
 t_LPAREN  = r'\('
 t_RPAREN  = r'\)'
 t_LKEY = r'\{'
@@ -84,6 +88,7 @@ t_MODULO = r'%'
 t_DIFERENTEQUE = r'!='
 t_COMA = r','
 t_SALTO = r';'  #\n
+t_BRACKET = r'\[\]'
 
 def t_IMPRIMIR(t):
     r'fmt\.Print(ln)?'

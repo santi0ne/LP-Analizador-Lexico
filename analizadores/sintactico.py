@@ -21,6 +21,7 @@ def p_bloque(p):
                 | condiciones
                 | clausula_if
                 | operaciones
+                | est_datos
                 '''
 
 def p_estructura(p):
@@ -133,6 +134,27 @@ def p_numero(p):
     '''NUMERO : ENTERO
               | FLOTANTE
               '''
+    
+def p_est_datos(p):
+    '''est_datos : lista
+                 '''
+
+def p_lista(p):
+    '''lista : lista_vacia
+             | lista_con_datos
+             | lista_definida
+             '''
+    
+def p_lista_vacia(p):
+    'lista_vacia : VAR IDENTIFICADOR BRACKET tdato'
+
+def p_lista_con_datos(p):
+    'lista_con_datos : IDENTIFICADOR ASSIGNV BRACKET tdato LKEY valores RKEY'
+
+def p_lista_definida(p):
+    'lista_definida : IDENTIFICADOR ASSIGNV MAKE LPAREN BRACKET tdato COMA ENTERO COMA ENTERO RPAREN'
+
+
 # Jeremy Martinez
 def p_operaciones(p):
     '''operaciones : suma
