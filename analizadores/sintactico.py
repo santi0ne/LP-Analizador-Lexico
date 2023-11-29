@@ -137,6 +137,7 @@ def p_numero(p):
     
 def p_est_datos(p):
     '''est_datos : lista
+                 | mapa
                  '''
 
 def p_lista(p):
@@ -154,6 +155,29 @@ def p_lista_con_datos(p):
 def p_lista_definida(p):
     'lista_definida : IDENTIFICADOR ASSIGNV MAKE LPAREN BRACKET tdato COMA ENTERO COMA ENTERO RPAREN'
 
+def p_mapa(p):
+    '''mapa : mapa_vacio
+            | mapa_con_datos
+            '''
+
+def p_mapa_vacio(p):
+    'mapa_vacio : IDENTIFICADOR ASSIGNV MAKE LPAREN MAP LBRACKET tdato RBRACKET tdato RPAREN'
+
+def p_mapa_con_datos(p):
+    'mapa_con_datos : IDENTIFICADOR ASSIGNV MAP LBRACKET tdato RBRACKET tdato LKEY valores_mapa RKEY'
+
+def p_valores_mapas(p):
+    '''valores_mapa : valor_mapa
+                    | valor_mapa COMA valores_mapa'''
+
+def p_valor_mapa(p):
+    'valor_mapa : dato COLLON dato'
+
+def p_dato(p):
+    '''dato : NUMERO
+            | CADENA
+            | BOOLEANO
+            '''
 
 # Jeremy Martinez
 def p_operaciones(p):

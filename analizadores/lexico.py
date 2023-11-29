@@ -21,6 +21,7 @@ reserved = {
    'switch':'SWITCH',    # Johnny Rodriguez
    'case':'CASE',        # Johnny Rodriguez
    'make':'MAKE',        # Johnny Rodriguez
+   'map':'MAP',          # Johnny Rodriguez
    'struct':'STRUCT',    # Nicolas Coronel
    'type':'TYPE'         # Nicolas Coronel
 }
@@ -44,7 +45,9 @@ tokens = (
     'OR',                # Johnny Rodriguez
     'NOT',               # Johnny Rodriguez
     'SALTO',             # Johnny Rodriguez
-    'BRACKET',          # Johnny Rodriguez
+    'BRACKET',           # Johnny Rodriguez
+    'LBRACKET',          # Johnny Rodriguez
+    'RBRACKET',          # Johnny Rodriguez
     'SUMA',              # Jeremy Martinez
     'RESTA',             # Jeremy Martinez
     'MULTIPLICACION',    # Jeremy Martinez
@@ -89,6 +92,8 @@ t_DIFERENTEQUE = r'!='
 t_COMA = r','
 t_SALTO = r';'  #\n
 t_BRACKET = r'\[\]'
+t_LBRACKET = r'\['
+t_RBRACKET = r'\]'
 
 def t_IMPRIMIR(t):
     r'fmt\.Print(ln)?'
