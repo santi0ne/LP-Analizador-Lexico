@@ -4,8 +4,6 @@
 
 import ply.lex as lex
 
-from pruebas.pruebas_lex import *
-
 # Palabras Reservadas
 reserved = {
    'var':'VAR',  # Johnny Rodriguez
@@ -131,16 +129,3 @@ t_ignore  = ' \t'
 def t_error(t):
   print(f"{t.type.upper()}: No se reconoce el caracter {t.value[0]} en la línea {t.lineno}")
   t.lexer.skip(1)
-
-# Construye el lexer
-lexer = lex.lex()
-
-# Código para analizar
-# code = switch_declaration()
-# code = test_mayorQue()
-# Enviando el código
-# lexer.input(code)
-
-# Tokenizar
-# for token in lexer:
-#     print(token)
