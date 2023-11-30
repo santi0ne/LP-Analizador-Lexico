@@ -8,7 +8,8 @@ import ply.lex as lex
 reserved = {
    'var':'VAR',  # Johnny Rodriguez
 
-   'int':'INT',          # Johnny Rodriguez 
+   'int32':'INT32',      # Johnny Rodriguez 
+   'int64':'INT64',      # Johnny Rodriguez
    'float32':'FLOAT32',  # Johnny Rodriguez  
    'float64':'FLOAT64',  # Johnny Rodriguez   
    'string':'STRING',    # Johnny Rodriguez  

@@ -49,7 +49,7 @@ def p_declaracion_variable_vacia(p):
     'declaracion : VAR IDENTIFICADOR tdato'
                 
 def p_declaracion_variable_simple(p):
-    '''declaracion : IDENTIFICADOR COLLON ASSIGN valor
+    '''declaracion : IDENTIFICADOR ASSIGNV valor
                 '''
                 
 def p_declaracion_variable_estructura(p):
@@ -91,7 +91,8 @@ def p_parametro(p):
     'parametro : IDENTIFICADOR tdato'
 
 def p_tdatos(p):
-    '''tdato : INT
+    '''tdato : INT32
+             | INT64
              | STRING
              | FLOAT32
              | FLOAT64
@@ -138,6 +139,7 @@ def p_numero(p):
 def p_est_datos(p):
     '''est_datos : lista
                  | mapa
+                 | conjunto
                  '''
 
 def p_lista(p):
@@ -172,6 +174,17 @@ def p_valores_mapas(p):
 
 def p_valor_mapa(p):
     'valor_mapa : dato COLLON dato'
+
+def p_conjunto(p):
+    '''conjunto : conjunto_con_mapa
+                | conjunto_con_slice
+                '''
+    
+def p_conjunto_con_mapa(p):
+    '''conjunto_con_mapa : IDENTIFICADOR ASSIGNV MAKE LPAREN MAP LBRACKET tdato RBRACKET BOOL RPAREN'''
+
+def p_conjunto_con_slice(p):
+    '''conjunto_con_slice : IDENTIFICADOR ASSIGNV BRACKET tdato LKEY RKEY'''
 
 def p_dato(p):
     '''dato : NUMERO
