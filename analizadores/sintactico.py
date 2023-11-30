@@ -98,9 +98,14 @@ def p_tdatos(p):
              | FLOAT64
              | BOOL
              '''
-    
+
+class SyntaxError(Exception):
+    pass
+
 def p_error(p):
     print("Error de sintaxis")
+    raise SyntaxError("Error de sintaxis en la entrada")
+
 
 # AVANCE 3
 
